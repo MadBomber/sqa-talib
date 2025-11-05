@@ -10,7 +10,7 @@ Classic RSI trading strategy using 70/30 levels.
 require 'sqa/talib'
 
 def rsi_strategy(prices)
-  rsi = SQA::TALib.rsi(prices, period: 14)
+  rsi = SQA::TAI.rsi(prices, period: 14)
   current_rsi = rsi.last
   current_price = prices.last
 
@@ -52,7 +52,7 @@ class MACDStrategy
   end
 
   def analyze(prices)
-    macd, signal, histogram = SQA::TALib.macd(
+    macd, signal, histogram = SQA::TAI.macd(
       prices,
       fast_period: @fast,
       slow_period: @slow,
@@ -154,7 +154,7 @@ Identify bullish and bearish divergences between price and RSI.
 require 'sqa/talib'
 
 def find_divergence(prices, lookback: 20)
-  rsi = SQA::TALib.rsi(prices, period: 14)
+  rsi = SQA::TAI.rsi(prices, period: 14)
 
   # Find recent peaks and troughs
   price_peak_idx = find_peak_index(prices, lookback)
@@ -239,9 +239,9 @@ require 'sqa/talib'
 class MultiMomentumSystem
   def analyze(prices)
     # Calculate indicators
-    rsi = SQA::TALib.rsi(prices, period: 14)
-    macd, signal, histogram = SQA::TALib.macd(prices)
-    mom = SQA::TALib.mom(prices, period: 10)
+    rsi = SQA::TAI.rsi(prices, period: 14)
+    macd, signal, histogram = SQA::TAI.macd(prices)
+    mom = SQA::TAI.mom(prices, period: 10)
 
     # Individual signals
     rsi_signal = get_rsi_signal(rsi.last)
@@ -328,10 +328,10 @@ require 'sqa/talib'
 
 def stochastic_strategy(high, low, close)
   # Calculate Stochastic
-  slowk, slowd = SQA::TALib.stoch(high, low, close)
+  slowk, slowd = SQA::TAI.stoch(high, low, close)
 
   # Calculate trend
-  sma_50 = SQA::TALib.sma(close, period: 50)
+  sma_50 = SQA::TAI.sma(close, period: 50)
   trend = close.last > sma_50.last ? :up : :down
 
   current_k = slowk.last
@@ -415,8 +415,8 @@ def momentum_breakout(prices, volume, lookback: 20)
   resistance = prices[-lookback..-1].max
 
   # Calculate momentum
-  rsi = SQA::TALib.rsi(prices, period: 14)
-  macd, signal, histogram = SQA::TALib.macd(prices)
+  rsi = SQA::TAI.rsi(prices, period: 14)
+  macd, signal, histogram = SQA::TAI.macd(prices)
 
   # Volume analysis
   avg_volume = volume[-lookback..-1].sum / lookback.to_f

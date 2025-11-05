@@ -11,7 +11,7 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           45.10, 45.42, 45.84, 46.08, 46.03, 46.41]
 
 # Calculate 5-period SMA
-sma = SQA::TALib.sma(prices, period: 5)
+sma = SQA::TAI.sma(prices, period: 5)
 
 puts "Current SMA: #{sma.last}"
 ```
@@ -40,8 +40,8 @@ Returns an array of SMA values. The first `period - 1` values will be `nil`.
 prices = load_historical_prices('AAPL')
 
 # Calculate two SMAs
-sma_50 = SQA::TALib.sma(prices, period: 50)
-sma_200 = SQA::TALib.sma(prices, period: 200)
+sma_50 = SQA::TAI.sma(prices, period: 50)
+sma_200 = SQA::TAI.sma(prices, period: 200)
 
 # Check for golden cross (bullish signal)
 if sma_50[-2] < sma_200[-2] && sma_50[-1] > sma_200[-1]
@@ -60,10 +60,10 @@ end
 prices = load_historical_prices('TSLA')
 
 # Calculate multiple SMAs
-sma_20 = SQA::TALib.sma(prices, period: 20)
-sma_50 = SQA::TALib.sma(prices, period: 50)
-sma_100 = SQA::TALib.sma(prices, period: 100)
-sma_200 = SQA::TALib.sma(prices, period: 200)
+sma_20 = SQA::TAI.sma(prices, period: 20)
+sma_50 = SQA::TAI.sma(prices, period: 50)
+sma_100 = SQA::TAI.sma(prices, period: 100)
+sma_200 = SQA::TAI.sma(prices, period: 200)
 
 current_price = prices.last
 

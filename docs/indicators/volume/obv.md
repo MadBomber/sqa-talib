@@ -11,7 +11,7 @@ close = [45.15, 46.26, 46.50, 45.21, 44.34, 44.09, 45.42, 46.08, 47.03, 47.28]
 volume = [2500, 3200, 2800, 4100, 3500, 3800, 4200, 3600, 5100, 4800]
 
 # Calculate OBV
-obv = SQA::TALib.obv(close, volume)
+obv = SQA::TAI.obv(close, volume)
 
 puts "Current OBV: #{obv.last.round(0)}"
 ```
@@ -52,10 +52,10 @@ If Close = Previous Close:
 ```ruby
 close, volume = load_price_volume_data('AAPL')
 
-obv = SQA::TALib.obv(close, volume)
+obv = SQA::TAI.obv(close, volume)
 
 # Calculate OBV trend
-obv_ma = SQA::TALib.sma(obv, period: 20)
+obv_ma = SQA::TAI.sma(obv, period: 20)
 
 current_obv = obv.last
 current_obv_ma = obv_ma.last
@@ -78,7 +78,7 @@ end
 ```ruby
 close, volume = load_price_volume_data('TSLA')
 
-obv = SQA::TALib.obv(close, volume)
+obv = SQA::TAI.obv(close, volume)
 
 # Find recent highs
 price_high_1 = close[-30..-15].max
@@ -121,7 +121,7 @@ end
 ```ruby
 close, volume = load_price_volume_data('MSFT')
 
-obv = SQA::TALib.obv(close, volume)
+obv = SQA::TAI.obv(close, volume)
 price_high_52w = close[-252..-1].max
 
 # Check if price breaking out
@@ -146,7 +146,7 @@ end
 ```ruby
 close, volume = load_price_volume_data('NVDA')
 
-obv = SQA::TALib.obv(close, volume)
+obv = SQA::TAI.obv(close, volume)
 
 # Compare OBV change with price change
 lookback = 20
@@ -218,9 +218,9 @@ end
 ```ruby
 close, volume = load_price_volume_data('GOOGL')
 
-obv = SQA::TALib.obv(close, volume)
-obv_ma_20 = SQA::TALib.sma(obv, period: 20)
-obv_ma_50 = SQA::TALib.sma(obv, period: 50)
+obv = SQA::TAI.obv(close, volume)
+obv_ma_20 = SQA::TAI.sma(obv, period: 20)
+obv_ma_50 = SQA::TAI.sma(obv, period: 50)
 
 current_obv = obv.last
 current_price = close.last

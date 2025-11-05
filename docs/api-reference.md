@@ -1,35 +1,35 @@
 # API Reference
 
-Complete API reference for SQA::TALib.
+Complete API reference for SQA::TAI.
 
 ## Module Methods
 
-### `SQA::TALib.available?`
+### `SQA::TAI.available?`
 
 Check if TA-Lib C library is available.
 
 **Returns:** `Boolean`
 
 ```ruby
-if SQA::TALib.available?
+if SQA::TAI.available?
   puts "TA-Lib is ready"
 end
 ```
 
-### `SQA::TALib.check_available!`
+### `SQA::TAI.check_available!`
 
 Verify TA-Lib is available, raise error if not.
 
-**Raises:** `SQA::TALib::TALibNotInstalledError`
+**Raises:** `SQA::TAI::TAINotInstalledError`
 
 ```ruby
-SQA::TALib.check_available!
+SQA::TAI.check_available!
 # Raises error if TA-Lib not found
 ```
 
 ## Overlap Studies
 
-### `SQA::TALib.sma(prices, period:)`
+### `SQA::TAI.sma(prices, period:)`
 
 Simple Moving Average.
 
@@ -40,10 +40,10 @@ Simple Moving Average.
 **Returns:** Array<Float>
 
 ```ruby
-sma = SQA::TALib.sma(prices, period: 20)
+sma = SQA::TAI.sma(prices, period: 20)
 ```
 
-### `SQA::TALib.ema(prices, period:)`
+### `SQA::TAI.ema(prices, period:)`
 
 Exponential Moving Average.
 
@@ -54,10 +54,10 @@ Exponential Moving Average.
 **Returns:** Array<Float>
 
 ```ruby
-ema = SQA::TALib.ema(prices, period: 20)
+ema = SQA::TAI.ema(prices, period: 20)
 ```
 
-### `SQA::TALib.wma(prices, period:)`
+### `SQA::TAI.wma(prices, period:)`
 
 Weighted Moving Average.
 
@@ -68,10 +68,10 @@ Weighted Moving Average.
 **Returns:** Array<Float>
 
 ```ruby
-wma = SQA::TALib.wma(prices, period: 20)
+wma = SQA::TAI.wma(prices, period: 20)
 ```
 
-### `SQA::TALib.bbands(prices, period:, nbdev_up:, nbdev_down:)`
+### `SQA::TAI.bbands(prices, period:, nbdev_up:, nbdev_down:)`
 
 Bollinger Bands.
 
@@ -84,7 +84,7 @@ Bollinger Bands.
 **Returns:** Array<Array<Float>> - [upper, middle, lower]
 
 ```ruby
-upper, middle, lower = SQA::TALib.bbands(
+upper, middle, lower = SQA::TAI.bbands(
   prices,
   period: 20,
   nbdev_up: 2.0,
@@ -94,7 +94,7 @@ upper, middle, lower = SQA::TALib.bbands(
 
 ## Momentum Indicators
 
-### `SQA::TALib.rsi(prices, period:)`
+### `SQA::TAI.rsi(prices, period:)`
 
 Relative Strength Index.
 
@@ -105,10 +105,10 @@ Relative Strength Index.
 **Returns:** Array<Float> - Values between 0-100
 
 ```ruby
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 ```
 
-### `SQA::TALib.macd(prices, fast_period:, slow_period:, signal_period:)`
+### `SQA::TAI.macd(prices, fast_period:, slow_period:, signal_period:)`
 
 Moving Average Convergence/Divergence.
 
@@ -121,10 +121,10 @@ Moving Average Convergence/Divergence.
 **Returns:** Array<Array<Float>> - [macd, signal, histogram]
 
 ```ruby
-macd, signal, histogram = SQA::TALib.macd(prices)
+macd, signal, histogram = SQA::TAI.macd(prices)
 
 # With custom periods
-macd, signal, histogram = SQA::TALib.macd(
+macd, signal, histogram = SQA::TAI.macd(
   prices,
   fast_period: 12,
   slow_period: 26,
@@ -132,7 +132,7 @@ macd, signal, histogram = SQA::TALib.macd(
 )
 ```
 
-### `SQA::TALib.stoch(high, low, close, fastk_period:, slowk_period:, slowd_period:)`
+### `SQA::TAI.stoch(high, low, close, fastk_period:, slowk_period:, slowd_period:)`
 
 Stochastic Oscillator.
 
@@ -147,10 +147,10 @@ Stochastic Oscillator.
 **Returns:** Array<Array<Float>> - [slowk, slowd]
 
 ```ruby
-slowk, slowd = SQA::TALib.stoch(high, low, close)
+slowk, slowd = SQA::TAI.stoch(high, low, close)
 ```
 
-### `SQA::TALib.mom(prices, period:)`
+### `SQA::TAI.mom(prices, period:)`
 
 Momentum.
 
@@ -161,12 +161,12 @@ Momentum.
 **Returns:** Array<Float>
 
 ```ruby
-mom = SQA::TALib.mom(prices, period: 10)
+mom = SQA::TAI.mom(prices, period: 10)
 ```
 
 ## Volatility Indicators
 
-### `SQA::TALib.atr(high, low, close, period:)`
+### `SQA::TAI.atr(high, low, close, period:)`
 
 Average True Range.
 
@@ -179,10 +179,10 @@ Average True Range.
 **Returns:** Array<Float>
 
 ```ruby
-atr = SQA::TALib.atr(high, low, close, period: 14)
+atr = SQA::TAI.atr(high, low, close, period: 14)
 ```
 
-### `SQA::TALib.trange(high, low, close)`
+### `SQA::TAI.trange(high, low, close)`
 
 True Range.
 
@@ -194,12 +194,12 @@ True Range.
 **Returns:** Array<Float>
 
 ```ruby
-tr = SQA::TALib.trange(high, low, close)
+tr = SQA::TAI.trange(high, low, close)
 ```
 
 ## Volume Indicators
 
-### `SQA::TALib.obv(close, volume)`
+### `SQA::TAI.obv(close, volume)`
 
 On Balance Volume.
 
@@ -210,10 +210,10 @@ On Balance Volume.
 **Returns:** Array<Float>
 
 ```ruby
-obv = SQA::TALib.obv(close, volume)
+obv = SQA::TAI.obv(close, volume)
 ```
 
-### `SQA::TALib.ad(high, low, close, volume)`
+### `SQA::TAI.ad(high, low, close, volume)`
 
 Chaikin A/D Line.
 
@@ -226,12 +226,12 @@ Chaikin A/D Line.
 **Returns:** Array<Float>
 
 ```ruby
-ad = SQA::TALib.ad(high, low, close, volume)
+ad = SQA::TAI.ad(high, low, close, volume)
 ```
 
 ## Pattern Recognition
 
-### `SQA::TALib.cdl_doji(open, high, low, close)`
+### `SQA::TAI.cdl_doji(open, high, low, close)`
 
 Doji candlestick pattern.
 
@@ -244,40 +244,40 @@ Doji candlestick pattern.
 **Returns:** Array<Integer> - Values: -100, 0, or 100
 
 ```ruby
-doji = SQA::TALib.cdl_doji(open, high, low, close)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
 ```
 
-### `SQA::TALib.cdl_hammer(open, high, low, close)`
+### `SQA::TAI.cdl_hammer(open, high, low, close)`
 
 Hammer candlestick pattern.
 
 **Returns:** Array<Integer> - Values: -100, 0, or 100
 
 ```ruby
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
 ```
 
-### `SQA::TALib.cdl_engulfing(open, high, low, close)`
+### `SQA::TAI.cdl_engulfing(open, high, low, close)`
 
 Engulfing candlestick pattern.
 
 **Returns:** Array<Integer> - Values: -100, 0, or 100
 
 ```ruby
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
 ```
 
 ## Exceptions
 
-### `SQA::TALib::Error`
+### `SQA::TAI::Error`
 
-Base error class for all SQA::TALib errors.
+Base error class for all SQA::TAI errors.
 
-### `SQA::TALib::TALibNotInstalledError`
+### `SQA::TAI::TAINotInstalledError`
 
 Raised when TA-Lib C library is not installed or not found.
 
-### `SQA::TALib::InvalidParameterError`
+### `SQA::TAI::InvalidParameterError`
 
 Raised when invalid parameters are provided to an indicator function.
 
@@ -289,8 +289,8 @@ Raised when invalid parameters are provided to an indicator function.
 
 ```ruby
 begin
-  SQA::TALib.sma([], period: 5)
-rescue SQA::TALib::InvalidParameterError => e
+  SQA::TAI.sma([], period: 5)
+rescue SQA::TAI::InvalidParameterError => e
   puts e.message
   # => "Prices array cannot be empty"
 end

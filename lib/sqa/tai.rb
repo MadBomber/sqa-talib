@@ -4,9 +4,9 @@ require_relative "talib/version"
 require "ta_lib_ffi"
 
 module SQA
-  module TALib
+  module TAI
     class Error < StandardError; end
-    class TALibNotInstalledError < Error; end
+    class TAINotInstalledError < Error; end
     class InvalidParameterError < Error; end
 
     class << self
@@ -21,7 +21,7 @@ module SQA
       def check_available!
         return if available?
 
-        raise TALibNotInstalledError,
+        raise TAINotInstalledError,
               "TA-Lib C library is not installed. " \
               "Please install it from https://ta-lib.org/"
       end

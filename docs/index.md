@@ -1,10 +1,10 @@
-# SQA::TALib - Technical Analysis Indicators
+# SQA::TAI - Technical Analysis Indicators
 
-Welcome to **SQA::TALib**, a Ruby wrapper around the legendary [TA-Lib](https://ta-lib.org/) C library, providing 200+ battle-tested technical analysis indicators.
+Welcome to **SQA::TAI**, a Ruby wrapper around the legendary [TA-Lib](https://ta-lib.org/) C library, providing 200+ battle-tested technical analysis indicators.
 
 ## Overview
 
-SQA::TALib is part of the [SQA (Stock Qualitative Analysis)](https://github.com/MadBomber/sqa) ecosystem, focusing on providing fast, reliable technical indicators for stock market analysis.
+SQA::TAI is part of the [SQA (Stock Qualitative Analysis)](https://github.com/MadBomber/sqa) ecosystem, focusing on providing fast, reliable technical indicators for stock market analysis.
 
 ## Features
 
@@ -23,9 +23,9 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           45.10, 45.42, 45.84, 46.08]
 
 # Calculate indicators
-sma = SQA::TALib.sma(prices, period: 5)
-rsi = SQA::TALib.rsi(prices, period: 14)
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+sma = SQA::TAI.sma(prices, period: 5)
+rsi = SQA::TAI.rsi(prices, period: 14)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 
 puts "SMA: #{sma.last}"
 puts "RSI: #{rsi.last}"
@@ -96,7 +96,7 @@ Identify candlestick patterns:
 
 ## SQA Ecosystem
 
-SQA::TALib is part of a larger ecosystem:
+SQA::TAI is part of a larger ecosystem:
 
 - **[sqa](https://github.com/MadBomber/sqa)** - Trading strategy framework
 - **[sqa-talib](https://github.com/MadBomber/sqa-talib)** - Technical indicators (this gem)

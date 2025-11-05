@@ -13,7 +13,7 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           46.57, 45.95, 46.50, 46.02]
 
 # Calculate Bollinger Bands
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 
 puts "Upper Band: #{upper.last}"
 puts "Middle Band: #{middle.last}"
@@ -49,7 +49,7 @@ Returns three arrays:
 ```ruby
 prices = load_historical_prices('AAPL')
 
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20, nbdev_up: 2.0, nbdev_down: 2.0)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20, nbdev_up: 2.0, nbdev_down: 2.0)
 
 # Calculate band width
 bandwidth = (upper.last - lower.last) / middle.last * 100
@@ -76,7 +76,7 @@ end
 ```ruby
 prices = load_historical_prices('TSLA')
 
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 current_price = prices.last
 
 # Buy when price touches lower band
@@ -102,7 +102,7 @@ end
 ```ruby
 prices = load_historical_prices('MSFT')
 
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 
 # Historical bandwidth calculation
 bandwidths = []

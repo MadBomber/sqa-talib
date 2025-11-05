@@ -12,7 +12,7 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           46.22, 45.64, 46.21, 46.25]
 
 # Calculate 10-period Momentum
-mom = SQA::TALib.mom(prices, period: 10)
+mom = SQA::TAI.mom(prices, period: 10)
 
 puts "Current Momentum: #{mom.last.round(2)}"
 ```
@@ -47,7 +47,7 @@ Momentum = Current Price - Price N periods ago
 ```ruby
 prices = load_historical_prices('AAPL')
 
-mom = SQA::TALib.mom(prices, period: 10)
+mom = SQA::TAI.mom(prices, period: 10)
 
 current_mom = mom.last
 previous_mom = mom[-2]
@@ -74,7 +74,7 @@ end
 ```ruby
 prices = load_historical_prices('TSLA')
 
-mom = SQA::TALib.mom(prices, period: 14)
+mom = SQA::TAI.mom(prices, period: 14)
 
 # Check for zero line crossovers
 if mom[-2] < 0 && mom[-1] > 0
@@ -91,7 +91,7 @@ end
 ```ruby
 prices = load_historical_prices('MSFT')
 
-mom = SQA::TALib.mom(prices, period: 10)
+mom = SQA::TAI.mom(prices, period: 10)
 
 # Find recent price and momentum peaks
 price_peak_1 = prices[-30..-15].max
@@ -117,9 +117,9 @@ end
 prices = load_historical_prices('NVDA')
 
 # Different momentum periods
-mom_5 = SQA::TALib.mom(prices, period: 5)
-mom_10 = SQA::TALib.mom(prices, period: 10)
-mom_20 = SQA::TALib.mom(prices, period: 20)
+mom_5 = SQA::TAI.mom(prices, period: 5)
+mom_10 = SQA::TAI.mom(prices, period: 10)
+mom_20 = SQA::TAI.mom(prices, period: 20)
 
 puts "5-period Momentum: #{mom_5.last.round(2)}"
 puts "10-period Momentum: #{mom_10.last.round(2)}"
@@ -140,8 +140,8 @@ end
 ```ruby
 prices = load_historical_prices('GOOGL')
 
-mom = SQA::TALib.mom(prices, period: 14)
-mom_ma = SQA::TALib.sma(mom.compact, period: 10)
+mom = SQA::TAI.mom(prices, period: 14)
+mom_ma = SQA::TAI.sma(mom.compact, period: 10)
 
 # Extend mom_ma with nils to match length
 full_mom_ma = Array.new(mom.length - mom_ma.length, nil) + mom_ma
@@ -207,9 +207,9 @@ end
 ```ruby
 prices = load_historical_prices('AAPL')
 
-mom = SQA::TALib.mom(prices, period: 12)
-rsi = SQA::TALib.rsi(prices, period: 14)
-sma_50 = SQA::TALib.sma(prices, period: 50)
+mom = SQA::TAI.mom(prices, period: 12)
+rsi = SQA::TAI.rsi(prices, period: 14)
+sma_50 = SQA::TAI.sma(prices, period: 50)
 
 current_price = prices.last
 

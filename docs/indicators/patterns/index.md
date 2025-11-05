@@ -24,9 +24,9 @@ low    = [99.5, 100.0, 101.0, 100.5, 102.0]
 close  = [101.0, 102.0, 101.5, 103.0, 104.0]
 
 # Detect patterns
-doji = SQA::TALib.cdl_doji(open, high, low, close)
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
 ```
 
 ## Return Values
@@ -67,13 +67,13 @@ open, high, low, close = load_ohlc_data('AAPL')
 
 # Check multiple patterns
 patterns = {
-  'Doji' => SQA::TALib.cdl_doji(open, high, low, close),
-  'Hammer' => SQA::TALib.cdl_hammer(open, high, low, close),
-  'Shooting Star' => SQA::TALib.cdl_shooting_star(open, high, low, close),
-  'Engulfing' => SQA::TALib.cdl_engulfing(open, high, low, close),
-  'Morning Star' => SQA::TALib.cdl_morning_star(open, high, low, close),
-  'Evening Star' => SQA::TALib.cdl_evening_star(open, high, low, close),
-  'Harami' => SQA::TALib.cdl_harami(open, high, low, close)
+  'Doji' => SQA::TAI.cdl_doji(open, high, low, close),
+  'Hammer' => SQA::TAI.cdl_hammer(open, high, low, close),
+  'Shooting Star' => SQA::TAI.cdl_shooting_star(open, high, low, close),
+  'Engulfing' => SQA::TAI.cdl_engulfing(open, high, low, close),
+  'Morning Star' => SQA::TAI.cdl_morning_star(open, high, low, close),
+  'Evening Star' => SQA::TAI.cdl_evening_star(open, high, low, close),
+  'Harami' => SQA::TAI.cdl_harami(open, high, low, close)
 }
 
 # Check current bar for patterns
@@ -92,12 +92,12 @@ end
 open, high, low, close = load_ohlc_data('TSLA')
 
 # Calculate trend
-sma_50 = SQA::TALib.sma(close, period: 50)
+sma_50 = SQA::TAI.sma(close, period: 50)
 uptrend = close.last > sma_50.last
 
 # Detect patterns
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
-shooting_star = SQA::TALib.cdl_shooting_star(open, high, low, close)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
+shooting_star = SQA::TAI.cdl_shooting_star(open, high, low, close)
 
 # Only take reversal signals aligned with trend context
 if hammer.last == 100 && !uptrend
@@ -114,7 +114,7 @@ end
 ```ruby
 open, high, low, close, volume = load_ohlc_volume_data('MSFT')
 
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
 
 # Calculate average volume
 avg_volume = volume[-20..-1].sum / 20.0
@@ -199,8 +199,8 @@ end
 open, high, low, close, volume = load_ohlc_volume_data('NVDA')
 
 # Trend context
-sma_50 = SQA::TALib.sma(close, period: 50)
-sma_200 = SQA::TALib.sma(close, period: 200)
+sma_50 = SQA::TAI.sma(close, period: 50)
+sma_200 = SQA::TAI.sma(close, period: 200)
 trend = if close.last > sma_50.last && sma_50.last > sma_200.last
   "Uptrend"
 elsif close.last < sma_50.last && sma_50.last < sma_200.last
@@ -210,7 +210,7 @@ else
 end
 
 # Momentum
-rsi = SQA::TALib.rsi(close, period: 14)
+rsi = SQA::TAI.rsi(close, period: 14)
 
 # Volume
 avg_volume = volume[-20..-1].sum / 20.0
@@ -232,7 +232,7 @@ puts "Volume Ratio: #{volume_ratio.round(2)}x"
 puts "\nPattern Analysis:"
 
 patterns_to_check.each do |name, config|
-  result = SQA::TALib.send(config[:func], open, high, low, close)
+  result = SQA::TAI.send(config[:func], open, high, low, close)
   signal = result.last
 
   next if signal == 0

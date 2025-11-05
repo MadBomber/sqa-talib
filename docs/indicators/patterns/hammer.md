@@ -13,7 +13,7 @@ low   = [98.0, 97.0, 95.0, 92.0, 90.0]
 close = [99.0, 98.0, 96.0, 94.5, 94.5]
 
 # Detect Hammer patterns
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
 
 if hammer.last == 100
   puts "Hammer detected - Bullish reversal signal!"
@@ -72,8 +72,8 @@ Returns an array of integers:
 ```ruby
 open, high, low, close = load_ohlc_data('AAPL')
 
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
-sma_20 = SQA::TALib.sma(close, period: 20)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
+sma_20 = SQA::TAI.sma(close, period: 20)
 
 if hammer.last == 100
   # Verify downtrend context
@@ -95,7 +95,7 @@ end
 ```ruby
 open, high, low, close = load_ohlc_data('TSLA')
 
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
 
 # Check previous bar for hammer
 if hammer[-2] == 100
@@ -129,7 +129,7 @@ end
 ```ruby
 open, high, low, close = load_ohlc_data('MSFT')
 
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
 
 # Find support level (recent low)
 support = close[-60..-1].min
@@ -153,7 +153,7 @@ end
 ```ruby
 open, high, low, close, volume = load_ohlc_volume_data('NVDA')
 
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
 
 if hammer.last == 100
   avg_volume = volume[-20..-1].sum / 20.0
@@ -179,8 +179,8 @@ end
 ```ruby
 open, high, low, close = load_ohlc_data('GOOGL')
 
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
-rsi = SQA::TALib.rsi(close, period: 14)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
+rsi = SQA::TAI.rsi(close, period: 14)
 
 if hammer.last == 100
   current_rsi = rsi.last
@@ -257,9 +257,9 @@ end
 ```ruby
 open, high, low, close, volume = load_ohlc_volume_data('AAPL')
 
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
-rsi = SQA::TALib.rsi(close, period: 14)
-sma_50 = SQA::TALib.sma(close, period: 50)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
+rsi = SQA::TAI.rsi(close, period: 14)
+sma_50 = SQA::TAI.sma(close, period: 50)
 
 # Check previous bar
 if hammer[-2] == 100

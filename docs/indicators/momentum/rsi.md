@@ -12,7 +12,7 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           46.22, 45.64, 46.21, 46.25, 46.08, 46.46]
 
 # Calculate 14-period RSI
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 
 puts "Current RSI: #{rsi.last.round(2)}"
 ```
@@ -42,7 +42,7 @@ Returns an array of RSI values ranging from 0 to 100. The first `period` values 
 ```ruby
 prices = load_historical_prices('AAPL')
 
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 current_rsi = rsi.last
 
 case current_rsi
@@ -62,7 +62,7 @@ end
 ```ruby
 prices = load_historical_prices('TSLA')
 
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 
 # Find recent highs in price and RSI
 price_high_1 = prices[-20..-10].max
@@ -97,8 +97,8 @@ end
 ```ruby
 prices = load_historical_prices('MSFT')
 
-rsi = SQA::TALib.rsi(prices, period: 14)
-sma_200 = SQA::TALib.sma(prices, period: 200)
+rsi = SQA::TAI.rsi(prices, period: 14)
+sma_200 = SQA::TAI.sma(prices, period: 200)
 
 current_price = prices.last
 current_rsi = rsi.last
@@ -142,8 +142,8 @@ Adjust overbought/oversold levels based on market conditions:
 daily_prices = load_historical_prices('AAPL', timeframe: 'daily')
 weekly_prices = load_historical_prices('AAPL', timeframe: 'weekly')
 
-daily_rsi = SQA::TALib.rsi(daily_prices, period: 14)
-weekly_rsi = SQA::TALib.rsi(weekly_prices, period: 14)
+daily_rsi = SQA::TAI.rsi(daily_prices, period: 14)
+weekly_rsi = SQA::TAI.rsi(weekly_prices, period: 14)
 
 puts "Daily RSI: #{daily_rsi.last.round(2)}"
 puts "Weekly RSI: #{weekly_rsi.last.round(2)}"

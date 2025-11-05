@@ -1,6 +1,6 @@
 # Trend Analysis Examples
 
-Learn how to use SQA::TALib indicators to identify and analyze market trends.
+Learn how to use SQA::TAI indicators to identify and analyze market trends.
 
 ## Moving Average Crossover Strategy
 
@@ -19,8 +19,8 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83, 45.10, 45.42,
           54.72, 55.15]
 
 # Calculate fast and slow moving averages
-fast_ma = SQA::TALib.sma(prices, period: 10)
-slow_ma = SQA::TALib.sma(prices, period: 20)
+fast_ma = SQA::TAI.sma(prices, period: 10)
+slow_ma = SQA::TAI.sma(prices, period: 20)
 
 # Detect crossovers
 def detect_crossover(fast, slow)
@@ -60,13 +60,13 @@ require 'sqa/talib'
 
 def analyze_trend_strength(prices)
   # Calculate multiple timeframe MAs
-  sma_20 = SQA::TALib.sma(prices, period: 20)
-  sma_50 = SQA::TALib.sma(prices, period: 50)
-  sma_200 = SQA::TALib.sma(prices, period: 200)
+  sma_20 = SQA::TAI.sma(prices, period: 20)
+  sma_50 = SQA::TAI.sma(prices, period: 50)
+  sma_200 = SQA::TAI.sma(prices, period: 200)
 
   # Calculate momentum
-  rsi = SQA::TALib.rsi(prices, period: 14)
-  macd, signal, histogram = SQA::TALib.macd(prices)
+  rsi = SQA::TAI.rsi(prices, period: 14)
+  macd, signal, histogram = SQA::TAI.macd(prices)
 
   current_price = prices.last
 
@@ -128,8 +128,8 @@ Use moving averages as dynamic support and resistance levels.
 require 'sqa/talib'
 
 def find_ma_support_resistance(prices)
-  ema_20 = SQA::TALib.ema(prices, period: 20)
-  ema_50 = SQA::TALib.ema(prices, period: 50)
+  ema_20 = SQA::TAI.ema(prices, period: 20)
+  ema_50 = SQA::TAI.ema(prices, period: 50)
 
   current_price = prices.last
   ema_20_val = ema_20.last
@@ -189,9 +189,9 @@ class TripleMASystem
   end
 
   def analyze(prices)
-    fast = SQA::TALib.ema(prices, period: @fast_period)
-    medium = SQA::TALib.ema(prices, period: @medium_period)
-    slow = SQA::TALib.ema(prices, period: @slow_period)
+    fast = SQA::TAI.ema(prices, period: @fast_period)
+    medium = SQA::TAI.ema(prices, period: @medium_period)
+    slow = SQA::TAI.ema(prices, period: @slow_period)
 
     current_price = prices.last
     fast_val = fast.last
@@ -314,8 +314,8 @@ require 'sqa/talib'
 
 # Simplified trend strength based on moving averages
 def calculate_trend_strength(prices)
-  sma_20 = SQA::TALib.sma(prices, period: 20)
-  sma_50 = SQA::TALib.sma(prices, period: 50)
+  sma_20 = SQA::TAI.sma(prices, period: 20)
+  sma_50 = SQA::TAI.sma(prices, period: 50)
 
   # Calculate slope of 20-day MA
   ma_slope = sma_20.compact.last(5).each_cons(2).map { |a, b| b - a }.sum

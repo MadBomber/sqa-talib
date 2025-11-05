@@ -11,7 +11,7 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           45.10, 45.42, 45.84, 46.08, 46.03, 46.41]
 
 # Calculate 12-period EMA
-ema = SQA::TALib.ema(prices, period: 12)
+ema = SQA::TAI.ema(prices, period: 12)
 
 puts "Current EMA: #{ema.last}"
 ```
@@ -49,8 +49,8 @@ The MACD indicator uses two EMAs:
 prices = load_historical_prices('AAPL')
 
 # MACD uses 12-period and 26-period EMAs
-ema_12 = SQA::TALib.ema(prices, period: 12)
-ema_26 = SQA::TALib.ema(prices, period: 26)
+ema_12 = SQA::TAI.ema(prices, period: 12)
+ema_26 = SQA::TAI.ema(prices, period: 26)
 
 # MACD line is the difference
 macd_line = ema_12.zip(ema_26).map do |fast, slow|
@@ -66,8 +66,8 @@ puts "Current MACD: #{macd_line.last}"
 prices = load_historical_prices('TSLA')
 
 # Fast and slow EMAs
-ema_9 = SQA::TALib.ema(prices, period: 9)
-ema_21 = SQA::TALib.ema(prices, period: 21)
+ema_9 = SQA::TAI.ema(prices, period: 9)
+ema_21 = SQA::TAI.ema(prices, period: 21)
 
 # Check for crossover
 if ema_9[-2] < ema_21[-2] && ema_9[-1] > ema_21[-1]
@@ -82,9 +82,9 @@ end
 ```ruby
 prices = load_historical_prices('MSFT')
 
-ema_20 = SQA::TALib.ema(prices, period: 20)
-ema_50 = SQA::TALib.ema(prices, period: 50)
-ema_200 = SQA::TALib.ema(prices, period: 200)
+ema_20 = SQA::TAI.ema(prices, period: 20)
+ema_50 = SQA::TAI.ema(prices, period: 50)
+ema_200 = SQA::TAI.ema(prices, period: 200)
 
 current_price = prices.last
 

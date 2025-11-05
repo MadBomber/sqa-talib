@@ -13,7 +13,7 @@ low   = [44.61, 44.83, 45.64, 45.95, 46.02, 46.50]
 close = [45.42, 45.84, 46.08, 46.46, 46.55, 47.03]
 
 # Calculate True Range
-trange = SQA::TALib.trange(high, low, close)
+trange = SQA::TAI.trange(high, low, close)
 
 puts "Current True Range: #{trange.last.round(2)}"
 ```
@@ -71,7 +71,7 @@ Simple High-Low range doesn't account for gaps:
 ```ruby
 high, low, close = load_ohlc_data('AAPL')
 
-trange = SQA::TALib.trange(high, low, close)
+trange = SQA::TAI.trange(high, low, close)
 
 # Get recent true ranges
 recent_tr = trange.compact.last(20)
@@ -96,7 +96,7 @@ end
 ```ruby
 high, low, close = load_ohlc_data('TSLA')
 
-trange = SQA::TALib.trange(high, low, close)
+trange = SQA::TAI.trange(high, low, close)
 
 # Look for range expansion days
 (5...trange.length).each do |i|
@@ -117,7 +117,7 @@ end
 ```ruby
 high, low, close = load_ohlc_data('MSFT')
 
-trange = SQA::TALib.trange(high, low, close)
+trange = SQA::TAI.trange(high, low, close)
 
 # Compare True Range with simple High-Low range
 comparisons = (1...high.length).map do |i|
@@ -150,7 +150,7 @@ end
 high, low, close = load_ohlc_data('NVDA')
 
 # Calculate True Range
-trange = SQA::TALib.trange(high, low, close)
+trange = SQA::TAI.trange(high, low, close)
 
 # Manually calculate ATR from True Range (for understanding)
 period = 14
@@ -167,7 +167,7 @@ trange.each_with_index do |tr, i|
 end
 
 # Compare with actual ATR
-actual_atr = SQA::TALib.atr(high, low, close, period: period)
+actual_atr = SQA::TAI.atr(high, low, close, period: period)
 
 puts "Manual ATR: #{manual_atr.last.round(4)}"
 puts "Actual ATR: #{actual_atr.last.round(4)}"

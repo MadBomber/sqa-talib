@@ -1,4 +1,4 @@
-# SQA::TALib - Technical Analysis Indicators
+# SQA::TAI - Technical Analysis Indicators
 
 [![Ruby](https://img.shields.io/badge/ruby-%3E%3D%203.1.0-ruby.svg)](https://www.ruby-lang.org/)
 [![Gem Version](https://badge.fury.io/rb/sqa-talib.svg)](https://badge.fury.io/rb/sqa-talib)
@@ -57,18 +57,18 @@ require 'sqa/talib'
 prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83, 45.10, 45.42, 45.84, 46.08]
 
 # Moving Averages
-sma = SQA::TALib.sma(prices, period: 5)
-ema = SQA::TALib.ema(prices, period: 5)
+sma = SQA::TAI.sma(prices, period: 5)
+ema = SQA::TAI.ema(prices, period: 5)
 
 # Momentum Indicators
-rsi = SQA::TALib.rsi(prices, period: 14)
-macd, signal, histogram = SQA::TALib.macd(prices)
+rsi = SQA::TAI.rsi(prices, period: 14)
+macd, signal, histogram = SQA::TAI.macd(prices)
 
 # Volatility
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 
 # Check if TA-Lib is available
-if SQA::TALib.available?
+if SQA::TAI.available?
   puts "TA-Lib is ready!"
 end
 ```
@@ -117,8 +117,8 @@ require 'sqa/talib'
 
 # Golden Cross detection
 prices = load_stock_prices('AAPL')
-sma_50 = SQA::TALib.sma(prices, period: 50)
-sma_200 = SQA::TALib.sma(prices, period: 200)
+sma_50 = SQA::TAI.sma(prices, period: 50)
+sma_200 = SQA::TAI.sma(prices, period: 200)
 
 if sma_50.last > sma_200.last
   puts "Golden Cross - Bullish signal!"
@@ -129,7 +129,7 @@ end
 ```ruby
 # RSI Overbought/Oversold
 prices = load_stock_prices('TSLA')
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 
 case rsi.last
 when 0...30
@@ -145,7 +145,7 @@ end
 ```ruby
 # Bollinger Bands
 prices = load_stock_prices('MSFT')
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20, nbdev_up: 2.0, nbdev_down: 2.0)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20, nbdev_up: 2.0, nbdev_down: 2.0)
 
 current_price = prices.last
 if current_price > upper.last
@@ -163,8 +163,8 @@ high   = [103, 105, 104, 102, 101]
 low    = [99, 101, 100, 97, 96]
 close  = [102, 103, 100, 98, 99]
 
-doji = SQA::TALib.cdl_doji(open, high, low, close)
-hammer = SQA::TALib.cdl_hammer(open, high, low, close)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
+hammer = SQA::TAI.cdl_hammer(open, high, low, close)
 
 puts "Doji detected!" if doji.last != 0
 puts "Hammer detected!" if hammer.last != 0
@@ -174,10 +174,10 @@ puts "Hammer detected!" if hammer.last != 0
 
 ```ruby
 begin
-  result = SQA::TALib.sma(prices, period: 30)
-rescue SQA::TALib::TALibNotInstalledError => e
+  result = SQA::TAI.sma(prices, period: 30)
+rescue SQA::TAI::TAINotInstalledError => e
   puts "Please install TA-Lib: #{e.message}"
-rescue SQA::TALib::InvalidParameterError => e
+rescue SQA::TAI::InvalidParameterError => e
   puts "Invalid parameters: #{e.message}"
 end
 ```

@@ -11,7 +11,7 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           45.10, 45.42, 45.84, 46.08, 46.03, 46.41]
 
 # Calculate 10-period WMA
-wma = SQA::TALib.wma(prices, period: 10)
+wma = SQA::TAI.wma(prices, period: 10)
 
 puts "Current WMA: #{wma.last}"
 ```
@@ -49,8 +49,8 @@ where:
 ```ruby
 prices = load_historical_prices('AAPL')
 
-wma_20 = SQA::TALib.wma(prices, period: 20)
-wma_50 = SQA::TALib.wma(prices, period: 50)
+wma_20 = SQA::TAI.wma(prices, period: 20)
+wma_50 = SQA::TAI.wma(prices, period: 50)
 
 current_price = prices.last
 
@@ -69,9 +69,9 @@ end
 prices = load_historical_prices('TSLA')
 
 period = 20
-sma = SQA::TALib.sma(prices, period: period)
-ema = SQA::TALib.ema(prices, period: period)
-wma = SQA::TALib.wma(prices, period: period)
+sma = SQA::TAI.sma(prices, period: period)
+ema = SQA::TAI.ema(prices, period: period)
+wma = SQA::TAI.wma(prices, period: period)
 
 puts "SMA-#{period}: #{sma.last.round(2)}"
 puts "EMA-#{period}: #{ema.last.round(2)}"

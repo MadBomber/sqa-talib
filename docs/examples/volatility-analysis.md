@@ -11,7 +11,7 @@ require 'sqa/talib'
 
 def calculate_position_size(high, low, close, account_value, risk_per_trade_pct: 1.0, atr_multiplier: 2.0)
   # Calculate ATR
-  atr = SQA::TALib.atr(high, low, close, period: 14)
+  atr = SQA::TAI.atr(high, low, close, period: 14)
   current_atr = atr.last
   current_price = close.last
 
@@ -78,7 +78,7 @@ class BollingerBandsStrategy
   end
 
   def analyze(prices)
-    upper, middle, lower = SQA::TALib.bbands(
+    upper, middle, lower = SQA::TAI.bbands(
       prices,
       period: @period,
       nbdev_up: @std_dev,
@@ -213,7 +213,7 @@ Identify when volatility expands after consolidation.
 require 'sqa/talib'
 
 def detect_volatility_breakout(high, low, close, lookback: 20)
-  atr = SQA::TALib.atr(high, low, close, period: 14)
+  atr = SQA::TAI.atr(high, low, close, period: 14)
 
   # Calculate ATR statistics
   recent_atr = atr.compact.last(lookback)
@@ -292,7 +292,7 @@ class ATRTrailingStop
   end
 
   def calculate_stop(high, low, close, position_type: :long)
-    atr = SQA::TALib.atr(high, low, close, period: 14)
+    atr = SQA::TAI.atr(high, low, close, period: 14)
     current_atr = atr.last
     current_price = close.last
 
@@ -359,7 +359,7 @@ Detect low volatility periods that often precede large moves.
 require 'sqa/talib'
 
 def detect_bb_squeeze(prices, lookback: 20)
-  upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+  upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 
   # Calculate bandwidth
   bandwidths = []
@@ -435,8 +435,8 @@ require 'sqa/talib'
 class VolatilityTradingSystem
   def analyze(high, low, close, prices)
     # Calculate indicators
-    atr = SQA::TALib.atr(high, low, close, period: 14)
-    upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+    atr = SQA::TAI.atr(high, low, close, period: 14)
+    upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 
     # ATR analysis
     recent_atr = atr.compact.last(20)

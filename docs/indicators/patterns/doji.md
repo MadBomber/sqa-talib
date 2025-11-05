@@ -13,7 +13,7 @@ low   = [99.0, 100.5, 101.5, 102.5, 103.5]
 close = [101.0, 101.5, 102.0, 103.5, 104.0]
 
 # Detect Doji patterns
-doji = SQA::TALib.cdl_doji(open, high, low, close)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
 
 if doji.last != 0
   puts "Doji detected!"
@@ -80,8 +80,8 @@ Open/close at high, long lower shadow (bullish)
 ```ruby
 open, high, low, close = load_ohlc_data('AAPL')
 
-doji = SQA::TALib.cdl_doji(open, high, low, close)
-sma_20 = SQA::TALib.sma(close, period: 20)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
+sma_20 = SQA::TAI.sma(close, period: 20)
 
 if doji.last == 100
   # Determine trend context
@@ -102,7 +102,7 @@ end
 ```ruby
 open, high, low, close = load_ohlc_data('TSLA')
 
-doji = SQA::TALib.cdl_doji(open, high, low, close)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
 
 # Find recent high (resistance)
 resistance = close[-60..-1].max
@@ -136,7 +136,7 @@ end
 ```ruby
 open, high, low, close, volume = load_ohlc_volume_data('MSFT')
 
-doji = SQA::TALib.cdl_doji(open, high, low, close)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
 
 if doji.last == 100
   # Check volume
@@ -158,11 +158,11 @@ end
 ```ruby
 open, high, low, close = load_ohlc_data('NVDA')
 
-doji = SQA::TALib.cdl_doji(open, high, low, close)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
 
 # Check for Morning/Evening Star patterns that include Doji
-morning_star = SQA::TALib.cdl_morning_star(open, high, low, close)
-evening_star = SQA::TALib.cdl_evening_star(open, high, low, close)
+morning_star = SQA::TAI.cdl_morning_star(open, high, low, close)
+evening_star = SQA::TAI.cdl_evening_star(open, high, low, close)
 
 if doji.last == 100
   puts "Doji detected"
@@ -216,9 +216,9 @@ end
 ```ruby
 open, high, low, close, volume = load_ohlc_volume_data('GOOGL')
 
-doji = SQA::TALib.cdl_doji(open, high, low, close)
-rsi = SQA::TALib.rsi(close, period: 14)
-sma_50 = SQA::TALib.sma(close, period: 50)
+doji = SQA::TAI.cdl_doji(open, high, low, close)
+rsi = SQA::TAI.rsi(close, period: 14)
+sma_50 = SQA::TAI.sma(close, period: 50)
 
 # Check for Doji
 if doji[-2] == 100  # Check previous candle

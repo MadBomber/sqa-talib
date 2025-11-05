@@ -1,6 +1,6 @@
-# Contributing to SQA::TALib
+# Contributing to SQA::TAI
 
-Thank you for your interest in contributing to SQA::TALib! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to SQA::TAI! This document provides guidelines for contributing to the project.
 
 ## Code of Conduct
 
@@ -26,7 +26,7 @@ If you find a bug, please create an issue on GitHub with:
 
 **Steps to Reproduce:**
 1. Install gem version X.X.X
-2. Run: SQA::TALib.rsi([1,2,3,4,5], period: 14)
+2. Run: SQA::TAI.rsi([1,2,3,4,5], period: 14)
 3. Observe nil values in output
 
 **Expected:** Array with RSI values
@@ -145,10 +145,10 @@ We follow standard Ruby style guidelines:
 ```ruby
 require 'test_helper'
 
-class TALibTest < Minitest::Test
+class TAITest < Minitest::Test
   def test_sma_calculates_correctly
     prices = [1, 2, 3, 4, 5]
-    result = SQA::TALib.sma(prices, period: 3)
+    result = SQA::TAI.sma(prices, period: 3)
 
     assert_equal 5, result.length
     assert_nil result[0]
@@ -160,7 +160,7 @@ class TALibTest < Minitest::Test
 
   def test_sma_handles_insufficient_data
     prices = [1, 2]
-    result = SQA::TALib.sma(prices, period: 10)
+    result = SQA::TAI.sma(prices, period: 10)
 
     assert_equal 2, result.length
     assert result.all?(&:nil?)
@@ -187,7 +187,7 @@ end
 #
 # @example Calculate 10-period SMA
 #   prices = [44.34, 44.09, 44.15, 43.61, 44.33]
-#   sma = SQA::TALib.sma(prices, period: 5)
+#   sma = SQA::TAI.sma(prices, period: 5)
 #   puts sma.last
 def sma(prices, period: 30)
   # Implementation
@@ -283,7 +283,7 @@ Contributors will be acknowledged in:
 
 ## License
 
-By contributing to SQA::TALib, you agree that your contributions will be licensed under the MIT License.
+By contributing to SQA::TAI, you agree that your contributions will be licensed under the MIT License.
 
 ## Questions?
 
@@ -299,4 +299,4 @@ We appreciate all contributions, whether it's:
 - Submitting code
 - Helping other users
 
-Thank you for making SQA::TALib better!
+Thank you for making SQA::TAI better!

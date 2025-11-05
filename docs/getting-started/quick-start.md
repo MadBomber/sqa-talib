@@ -1,6 +1,6 @@
 # Quick Start
 
-Get up and running with SQA::TALib in minutes.
+Get up and running with SQA::TAI in minutes.
 
 ## Your First Indicator
 
@@ -14,11 +14,11 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           46.22, 45.64]
 
 # Calculate Simple Moving Average
-sma = SQA::TALib.sma(prices, period: 5)
+sma = SQA::TAI.sma(prices, period: 5)
 puts "5-period SMA: #{sma.last}"
 
 # Calculate RSI
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 puts "14-period RSI: #{rsi.last}"
 ```
 
@@ -30,8 +30,8 @@ puts "14-period RSI: #{rsi.last}"
 prices = load_stock_prices('AAPL')
 
 # Calculate fast and slow moving averages
-sma_fast = SQA::TALib.sma(prices, period: 50)
-sma_slow = SQA::TALib.sma(prices, period: 200)
+sma_fast = SQA::TAI.sma(prices, period: 50)
+sma_slow = SQA::TAI.sma(prices, period: 200)
 
 # Check for golden cross
 if sma_fast.last > sma_slow.last
@@ -45,7 +45,7 @@ end
 
 ```ruby
 prices = load_stock_prices('TSLA')
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 
 case rsi.last
 when 0...30
@@ -63,7 +63,7 @@ end
 prices = load_stock_prices('MSFT')
 
 # Calculate Bollinger Bands
-upper, middle, lower = SQA::TALib.bbands(
+upper, middle, lower = SQA::TAI.bbands(
   prices,
   period: 20,
   nbdev_up: 2.0,
@@ -96,16 +96,16 @@ close  = data[:close]
 volume = data[:volume]
 
 # Calculate ATR (volatility)
-atr = SQA::TALib.atr(high, low, close, period: 14)
+atr = SQA::TAI.atr(high, low, close, period: 14)
 puts "14-day ATR: #{atr.last}"
 
 # Calculate Stochastic
-slowk, slowd = SQA::TALib.stoch(high, low, close)
+slowk, slowd = SQA::TAI.stoch(high, low, close)
 puts "Stochastic K: #{slowk.last}"
 puts "Stochastic D: #{slowd.last}"
 
 # Calculate OBV (volume)
-obv = SQA::TALib.obv(close, volume)
+obv = SQA::TAI.obv(close, volume)
 puts "OBV: #{obv.last}"
 ```
 
@@ -115,11 +115,11 @@ Always handle potential errors:
 
 ```ruby
 begin
-  result = SQA::TALib.sma(prices, period: 30)
-rescue SQA::TALib::TALibNotInstalledError => e
+  result = SQA::TAI.sma(prices, period: 30)
+rescue SQA::TAI::TAINotInstalledError => e
   puts "Error: TA-Lib not installed"
   puts e.message
-rescue SQA::TALib::InvalidParameterError => e
+rescue SQA::TAI::InvalidParameterError => e
   puts "Error: Invalid parameters"
   puts e.message
 end
@@ -130,7 +130,7 @@ end
 ### 1. Check Availability
 
 ```ruby
-unless SQA::TALib.available?
+unless SQA::TAI.available?
   puts "TA-Lib is not available. Please install it."
   exit 1
 end
@@ -142,7 +142,7 @@ end
 def calculate_indicators(prices)
   return unless prices && prices.size >= 14
 
-  rsi = SQA::TALib.rsi(prices, period: 14)
+  rsi = SQA::TAI.rsi(prices, period: 14)
   # ... rest of code
 end
 ```
@@ -152,7 +152,7 @@ end
 TA-Lib returns nil for periods where calculation isn't possible:
 
 ```ruby
-sma = SQA::TALib.sma(prices, period: 10)
+sma = SQA::TAI.sma(prices, period: 10)
 
 # Filter out nils
 valid_sma = sma.compact

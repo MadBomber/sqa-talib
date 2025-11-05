@@ -1,6 +1,6 @@
 # Technical Indicators
 
-SQA::TALib provides access to 200+ technical analysis indicators from the TA-Lib C library. All indicators are accessible through simple, intuitive Ruby methods.
+SQA::TAI provides access to 200+ technical analysis indicators from the TA-Lib C library. All indicators are accessible through simple, intuitive Ruby methods.
 
 ## Indicator Categories
 
@@ -52,13 +52,13 @@ All indicators follow a consistent API pattern:
 require 'sqa/talib'
 
 # Single input, single output
-result = SQA::TALib.sma(prices, period: 10)
+result = SQA::TAI.sma(prices, period: 10)
 
 # Single input, multiple outputs
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 
 # Multiple inputs (OHLC data)
-atr = SQA::TALib.atr(high, low, close, period: 14)
+atr = SQA::TAI.atr(high, low, close, period: 14)
 ```
 
 ## Common Parameters
@@ -97,14 +97,14 @@ require 'sqa/talib'
 prices = load_stock_data('AAPL')
 
 # Trend: Moving averages
-sma_20 = SQA::TALib.sma(prices, period: 20)
-sma_50 = SQA::TALib.sma(prices, period: 50)
+sma_20 = SQA::TAI.sma(prices, period: 20)
+sma_50 = SQA::TAI.sma(prices, period: 50)
 
 # Momentum: RSI
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 
 # Volatility: Bollinger Bands
-upper, middle, lower = SQA::TALib.bbands(prices, period: 20)
+upper, middle, lower = SQA::TAI.bbands(prices, period: 20)
 
 # Analyze current conditions
 current_price = prices.last

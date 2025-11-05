@@ -1,10 +1,10 @@
 # Installation
 
-This guide will help you install SQA::TALib and its dependencies.
+This guide will help you install SQA::TAI and its dependencies.
 
 ## Prerequisites
 
-SQA::TALib requires:
+SQA::TAI requires:
 
 - Ruby >= 3.1.0
 - TA-Lib C library >= 0.4.0
@@ -93,16 +93,16 @@ Test that everything is working:
 require 'sqa/talib'
 
 # Check if TA-Lib is available
-if SQA::TALib.available?
+if SQA::TAI.available?
   puts "✓ TA-Lib is installed and ready!"
-  puts "Version: #{SQA::TALib::VERSION}"
+  puts "Version: #{SQA::TAI::VERSION}"
 else
   puts "✗ TA-Lib C library not found"
 end
 
 # Try a simple calculation
 prices = [10, 11, 12, 13, 14, 15]
-sma = SQA::TALib.sma(prices, period: 3)
+sma = SQA::TAI.sma(prices, period: 3)
 puts "SMA test: #{sma}"
 ```
 

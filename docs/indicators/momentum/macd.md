@@ -14,7 +14,7 @@ prices = [44.34, 44.09, 44.15, 43.61, 44.33, 44.83,
           47.35, 47.28, 47.61, 48.12, 48.34, 48.21]
 
 # Calculate MACD (returns three arrays)
-macd, signal, histogram = SQA::TALib.macd(prices)
+macd, signal, histogram = SQA::TAI.macd(prices)
 
 puts "MACD Line: #{macd.last.round(4)}"
 puts "Signal Line: #{signal.last.round(4)}"
@@ -59,7 +59,7 @@ Histogram = MACD Line - Signal Line
 ```ruby
 prices = load_historical_prices('AAPL')
 
-macd, signal, histogram = SQA::TALib.macd(prices)
+macd, signal, histogram = SQA::TAI.macd(prices)
 
 # Check for crossovers
 if macd[-2] < signal[-2] && macd[-1] > signal[-1]
@@ -76,7 +76,7 @@ end
 ```ruby
 prices = load_historical_prices('TSLA')
 
-macd, signal, histogram = SQA::TALib.macd(prices)
+macd, signal, histogram = SQA::TAI.macd(prices)
 
 # Analyze histogram momentum
 recent_histogram = histogram.compact.last(5)
@@ -99,7 +99,7 @@ end
 ```ruby
 prices = load_historical_prices('MSFT')
 
-macd, signal, histogram = SQA::TALib.macd(prices)
+macd, signal, histogram = SQA::TAI.macd(prices)
 
 # Find recent highs
 price_high_1_idx = prices[-30..-15].index(prices[-30..-15].max) - 30
@@ -125,7 +125,7 @@ end
 ```ruby
 prices = load_historical_prices('NVDA')
 
-macd, signal, histogram = SQA::TALib.macd(prices)
+macd, signal, histogram = SQA::TAI.macd(prices)
 
 # Zero line crossovers are significant
 if macd[-2] < 0 && macd[-1] > 0
@@ -191,13 +191,13 @@ end
 prices = load_historical_prices('GOOGL')
 
 # MACD for momentum
-macd, signal, histogram = SQA::TALib.macd(prices)
+macd, signal, histogram = SQA::TAI.macd(prices)
 
 # RSI for overbought/oversold
-rsi = SQA::TALib.rsi(prices, period: 14)
+rsi = SQA::TAI.rsi(prices, period: 14)
 
 # Trend filter
-sma_200 = SQA::TALib.sma(prices, period: 200)
+sma_200 = SQA::TAI.sma(prices, period: 200)
 
 current_price = prices.last
 

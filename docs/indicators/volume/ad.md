@@ -14,7 +14,7 @@ close  = [45.42, 45.84, 46.08, 46.46, 46.55, 47.03, 47.28]
 volume = [2500, 3200, 2800, 4100, 3500, 4200, 3600]
 
 # Calculate A/D Line
-ad = SQA::TALib.ad(high, low, close, volume)
+ad = SQA::TAI.ad(high, low, close, volume)
 
 puts "Current A/D: #{ad.last.round(0)}"
 ```
@@ -57,10 +57,10 @@ Where Money Flow Multiplier ranges from -1 to +1:
 ```ruby
 high, low, close, volume = load_ohlc_volume_data('AAPL')
 
-ad = SQA::TALib.ad(high, low, close, volume)
+ad = SQA::TAI.ad(high, low, close, volume)
 
 # Calculate A/D moving average
-ad_ma = SQA::TALib.sma(ad, period: 20)
+ad_ma = SQA::TAI.sma(ad, period: 20)
 
 current_ad = ad.last
 current_ad_ma = ad_ma.last
@@ -86,7 +86,7 @@ end
 ```ruby
 high, low, close, volume = load_ohlc_volume_data('TSLA')
 
-ad = SQA::TALib.ad(high, low, close, volume)
+ad = SQA::TAI.ad(high, low, close, volume)
 
 # Find recent peaks
 price_peak_1_idx = close[-30..-15].index(close[-30..-15].max) - 30
@@ -130,7 +130,7 @@ end
 ```ruby
 high, low, close, volume = load_ohlc_volume_data('MSFT')
 
-ad = SQA::TALib.ad(high, low, close, volume)
+ad = SQA::TAI.ad(high, low, close, volume)
 
 # Find resistance level
 resistance = close[-60..-1].max
@@ -158,8 +158,8 @@ end
 ```ruby
 high, low, close, volume = load_ohlc_volume_data('NVDA')
 
-ad = SQA::TALib.ad(high, low, close, volume)
-obv = SQA::TALib.obv(close, volume)
+ad = SQA::TAI.ad(high, low, close, volume)
+obv = SQA::TAI.obv(close, volume)
 
 # Normalize for comparison (percentage change from start)
 ad_start = ad.compact.first
@@ -221,9 +221,9 @@ end
 ```ruby
 high, low, close, volume = load_ohlc_volume_data('GOOGL')
 
-ad = SQA::TALib.ad(high, low, close, volume)
-ad_ma_20 = SQA::TALib.sma(ad, period: 20)
-price_ma_20 = SQA::TALib.sma(close, period: 20)
+ad = SQA::TAI.ad(high, low, close, volume)
+ad_ma_20 = SQA::TAI.sma(ad, period: 20)
+price_ma_20 = SQA::TAI.sma(close, period: 20)
 
 current_ad = ad.last
 current_price = close.last

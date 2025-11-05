@@ -16,7 +16,7 @@ close = [45.42, 45.84, 46.08, 46.46, 46.55, 47.03, 47.28, 47.61, 48.12, 48.21,
          48.15, 48.85, 49.05, 49.25, 49.65]
 
 # Calculate 14-period ATR
-atr = SQA::TALib.atr(high, low, close, period: 14)
+atr = SQA::TAI.atr(high, low, close, period: 14)
 
 puts "Current ATR: #{atr.last.round(2)}"
 ```
@@ -59,7 +59,7 @@ ATR doesn't indicate direction, only volatility magnitude.
 ```ruby
 high, low, close = load_ohlc_data('AAPL')
 
-atr = SQA::TALib.atr(high, low, close, period: 14)
+atr = SQA::TAI.atr(high, low, close, period: 14)
 current_atr = atr.last
 current_price = close.last
 
@@ -83,7 +83,7 @@ puts "Stop Loss: $#{(current_price - stop_distance).round(2)}"
 ```ruby
 high, low, close = load_ohlc_data('TSLA')
 
-atr = SQA::TALib.atr(high, low, close, period: 14)
+atr = SQA::TAI.atr(high, low, close, period: 14)
 
 # Calculate average ATR
 avg_atr = atr.compact[-20..-1].sum / 20.0
@@ -104,7 +104,7 @@ end
 ```ruby
 high, low, close = load_ohlc_data('MSFT')
 
-atr = SQA::TALib.atr(high, low, close, period: 14)
+atr = SQA::TAI.atr(high, low, close, period: 14)
 current_atr = atr.last
 current_price = close.last
 
@@ -129,7 +129,7 @@ symbols = ['AAPL', 'TSLA', 'SPY']
 
 volatility_data = symbols.map do |symbol|
   high, low, close = load_ohlc_data(symbol)
-  atr = SQA::TALib.atr(high, low, close, period: 14)
+  atr = SQA::TAI.atr(high, low, close, period: 14)
   current_price = close.last
   current_atr = atr.last
 
@@ -154,7 +154,7 @@ end
 ```ruby
 high, low, close = load_ohlc_data('NVDA')
 
-atr = SQA::TALib.atr(high, low, close, period: 14)
+atr = SQA::TAI.atr(high, low, close, period: 14)
 
 # Calculate Chandelier Exit (ATR-based trailing stop)
 multiplier = 3

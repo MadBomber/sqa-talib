@@ -13,7 +13,7 @@ low   = [99.0, 100.5, 101.5, 102.5, 102.0]
 close = [100.5, 102.0, 104.5, 103.0, 107.0]
 
 # Detect Engulfing patterns
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
 
 if engulfing.last == 100
   puts "Bullish Engulfing - Buy signal!"
@@ -88,8 +88,8 @@ After uptrend:
 ```ruby
 open, high, low, close = load_ohlc_data('AAPL')
 
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
-sma_50 = SQA::TALib.sma(close, period: 50)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
+sma_50 = SQA::TAI.sma(close, period: 50)
 
 if engulfing.last == 100
   # Bullish engulfing
@@ -121,7 +121,7 @@ end
 ```ruby
 open, high, low, close, volume = load_ohlc_volume_data('TSLA')
 
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
 
 if engulfing.last != 0
   pattern_type = engulfing.last > 0 ? "Bullish" : "Bearish"
@@ -154,7 +154,7 @@ end
 ```ruby
 open, high, low, close = load_ohlc_data('MSFT')
 
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
 
 # Find key levels
 resistance = close[-120..-1].max
@@ -188,8 +188,8 @@ end
 ```ruby
 open, high, low, close = load_ohlc_data('NVDA')
 
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
-rsi = SQA::TALib.rsi(close, period: 14)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
+rsi = SQA::TAI.rsi(close, period: 14)
 
 if engulfing.last == 100  # Bullish
   if rsi.last < 30
@@ -281,10 +281,10 @@ end
 ```ruby
 open, high, low, close, volume = load_ohlc_volume_data('GOOGL')
 
-engulfing = SQA::TALib.cdl_engulfing(open, high, low, close)
-rsi = SQA::TALib.rsi(close, period: 14)
-sma_50 = SQA::TALib.sma(close, period: 50)
-sma_200 = SQA::TALib.sma(close, period: 200)
+engulfing = SQA::TAI.cdl_engulfing(open, high, low, close)
+rsi = SQA::TAI.rsi(close, period: 14)
+sma_50 = SQA::TAI.sma(close, period: 50)
+sma_200 = SQA::TAI.sma(close, period: 200)
 
 if engulfing.last != 0
   is_bullish = engulfing.last > 0

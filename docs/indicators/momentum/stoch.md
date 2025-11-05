@@ -13,7 +13,7 @@ low   = [44.61, 44.83, 45.64, 45.95, 46.02, 46.50, 47.28, 47.28, 48.03, 48.21]
 close = [45.42, 45.84, 46.08, 46.46, 46.55, 47.03, 47.28, 47.61, 48.12, 48.21]
 
 # Calculate Stochastic (returns two arrays)
-slowk, slowd = SQA::TALib.stoch(high, low, close)
+slowk, slowd = SQA::TAI.stoch(high, low, close)
 
 puts "%K (fast): #{slowk.last.round(2)}"
 puts "%D (slow): #{slowd.last.round(2)}"
@@ -58,7 +58,7 @@ Returns two arrays:
 ```ruby
 high, low, close = load_ohlc_data('AAPL')
 
-slowk, slowd = SQA::TALib.stoch(high, low, close)
+slowk, slowd = SQA::TAI.stoch(high, low, close)
 
 k = slowk.last
 d = slowd.last
@@ -81,7 +81,7 @@ end
 ```ruby
 high, low, close = load_ohlc_data('TSLA')
 
-slowk, slowd = SQA::TALib.stoch(high, low, close)
+slowk, slowd = SQA::TAI.stoch(high, low, close)
 
 # Check for crossovers
 if slowk[-2] < slowd[-2] && slowk[-1] > slowd[-1]
@@ -104,7 +104,7 @@ end
 ```ruby
 high, low, close = load_ohlc_data('MSFT')
 
-slowk, slowd = SQA::TALib.stoch(high, low, close)
+slowk, slowd = SQA::TAI.stoch(high, low, close)
 
 # Find recent lows
 price_low_1 = close[-30..-15].min
@@ -127,8 +127,8 @@ end
 ```ruby
 high, low, close = load_ohlc_data('NVDA')
 
-slowk, slowd = SQA::TALib.stoch(high, low, close)
-sma_50 = SQA::TALib.sma(close, period: 50)
+slowk, slowd = SQA::TAI.stoch(high, low, close)
+sma_50 = SQA::TAI.sma(close, period: 50)
 
 current_price = close.last
 k = slowk.last
@@ -174,13 +174,13 @@ end
 high, low, close = load_ohlc_data('AAPL')
 
 # Slow Stochastic (default, smoother)
-slowk, slowd = SQA::TALib.stoch(high, low, close,
+slowk, slowd = SQA::TAI.stoch(high, low, close,
                                   fastk_period: 14,
                                   slowk_period: 3,
                                   slowd_period: 3)
 
 # Fast Stochastic (more sensitive)
-fastk, fastd = SQA::TALib.stoch(high, low, close,
+fastk, fastd = SQA::TAI.stoch(high, low, close,
                                   fastk_period: 14,
                                   slowk_period: 1,
                                   slowd_period: 3)
