@@ -179,6 +179,77 @@ else
 end
 ```
 
+### Advanced Moving Averages
+
+```ruby
+prices = load_historical_prices('GOOGL')
+
+# Double Exponential Moving Average (faster response)
+dema = SQA::TAI.dema(prices, period: 20)
+
+# Kaufman Adaptive Moving Average (adapts to market conditions)
+kama = SQA::TAI.kama(prices, period: 30)
+
+# Triple Exponential Moving Average T3 (smooth)
+t3 = SQA::TAI.t3(prices, period: 5, vfactor: 0.7)
+```
+
+### Statistical Analysis
+
+```ruby
+stock_prices = load_historical_prices('AAPL')
+market_prices = load_historical_prices('SPY')
+
+# Calculate correlation between stock and market
+correlation = SQA::TAI.correl(stock_prices, market_prices, period: 30)
+puts "Correlation: #{correlation.last}"
+
+# Calculate beta (systematic risk)
+beta = SQA::TAI.beta(stock_prices, market_prices, period: 30)
+puts "Beta: #{beta.last}"
+
+# Calculate standard deviation (volatility)
+stddev = SQA::TAI.stddev(stock_prices, period: 20)
+puts "Volatility: #{stddev.last}"
+```
+
+### Cycle Detection
+
+```ruby
+prices = load_historical_prices('BTC-USD')
+
+# Detect dominant cycle period
+cycle_period = SQA::TAI.ht_dcperiod(prices)
+puts "Dominant cycle: #{cycle_period.last} days"
+
+# Detect trend vs cycle mode
+trend_mode = SQA::TAI.ht_trendmode(prices)
+if trend_mode.last == 1
+  puts "Market is trending"
+else
+  puts "Market is cycling/ranging"
+end
+```
+
+### Multiple Candlestick Patterns
+
+```ruby
+# Detect various reversal patterns
+morning_star = SQA::TAI.cdl_morningstar(open, high, low, close)
+evening_star = SQA::TAI.cdl_eveningstar(open, high, low, close)
+harami = SQA::TAI.cdl_harami(open, high, low, close)
+
+# Check for bullish reversal
+if morning_star.last == 100
+  puts "Morning Star detected - potential bullish reversal"
+end
+
+# Check for bearish reversal
+if evening_star.last == -100
+  puts "Evening Star detected - potential bearish reversal"
+end
+```
+
 ## Next Steps
 
 - [Indicator Reference](../indicators/index.md) - Explore all available indicators

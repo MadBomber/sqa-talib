@@ -78,7 +78,6 @@ class SQA::TAITest < Minitest::Test
 
   def test_atr_with_high_low_close
     skip "TA-Lib not installed" unless SQA::TAI.available?
-    skip "Known issue with ta_lib_ffi 0.3.0 multi-array parameters - see issue #TBD"
 
     result = SQA::TAI.atr(TestData::HIGH, TestData::LOW, TestData::CLOSE, period: 5)
 
@@ -116,7 +115,6 @@ class SQA::TAITest < Minitest::Test
 
   def test_pattern_recognition
     skip "TA-Lib not installed" unless SQA::TAI.available?
-    skip "Known issue with ta_lib_ffi 0.3.0 multi-array parameters - see issue #TBD"
 
     result = SQA::TAI.cdl_doji(
       TestData::OPEN,
@@ -134,7 +132,7 @@ class SQA::TAITest < Minitest::Test
 
   def test_obv_volume_indicator
     skip "TA-Lib not installed" unless SQA::TAI.available?
-    skip "Known issue with ta_lib_ffi 0.3.0 multi-array parameters - see issue #TBD"
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
 
     result = SQA::TAI.obv(TestData::CLOSE, TestData::VOLUME)
 
@@ -144,7 +142,7 @@ class SQA::TAITest < Minitest::Test
 
   def test_stoch_oscillator
     skip "TA-Lib not installed" unless SQA::TAI.available?
-    skip "Known issue with ta_lib_ffi 0.3.0 multi-array parameters - see issue #TBD"
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
 
     slowk, slowd = SQA::TAI.stoch(
       TestData::HIGH,
@@ -158,6 +156,706 @@ class SQA::TAITest < Minitest::Test
     # Stochastic values should be between 0 and 100
     slowk.compact.each do |value|
       assert value >= 0 && value <= 100, "Stoch K value out of range"
+    end
+  end
+
+  # ========================================
+  # Tests for New Moving Averages
+  # ========================================
+
+  def test_dema
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.dema(TestData::PRICES, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_tema
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.tema(TestData::PRICES, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_trima
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.trima(TestData::PRICES, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_kama
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.kama(TestData::PRICES, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_t3
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.t3(TestData::PRICES, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  # ========================================
+  # Tests for New Momentum Indicators
+  # ========================================
+
+  def test_cci
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
+
+    result = SQA::TAI.cci(TestData::HIGH, TestData::LOW, TestData::CLOSE, period: 5)
+
+    assert_instance_of Array, result
+    # CCI may return empty for small datasets, just verify it returns an array
+  end
+
+  def test_willr
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
+
+    result = SQA::TAI.willr(TestData::HIGH, TestData::LOW, TestData::CLOSE, period: 5)
+
+    assert_instance_of Array, result
+    # Williams %R should be between -100 and 0 for values that exist
+    result.compact.each do |value|
+      assert value >= -100 && value <= 0, "WILLR value out of range"
+    end
+  end
+
+  def test_roc
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.roc(TestData::PRICES, period: 10)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_rocp
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.rocp(TestData::PRICES, period: 10)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_rocr
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.rocr(TestData::PRICES, period: 10)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_ppo
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.ppo(TestData::PRICES)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_adx
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
+
+    result = SQA::TAI.adx(TestData::HIGH, TestData::LOW, TestData::CLOSE, period: 5)
+
+    assert_instance_of Array, result
+    # ADX should be between 0 and 100 for values that exist
+    result.compact.each do |value|
+      assert value >= 0 && value <= 100, "ADX value out of range"
+    end
+  end
+
+  # ========================================
+  # Tests for New Volatility Indicators
+  # ========================================
+
+  def test_natr
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
+
+    result = SQA::TAI.natr(TestData::HIGH, TestData::LOW, TestData::CLOSE, period: 5)
+
+    assert_instance_of Array, result
+    # NATR should always be positive for values that exist
+    result.compact.each do |value|
+      assert value >= 0, "NATR should be positive"
+    end
+  end
+
+  def test_sar
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
+
+    result = SQA::TAI.sar(TestData::HIGH, TestData::LOW)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  # ========================================
+  # Tests for Cycle Indicators
+  # ========================================
+
+  def test_ht_dcperiod
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.ht_dcperiod(TestData::PRICES)
+
+    assert_instance_of Array, result
+    # HT indicators need lots of data, may return empty for small datasets
+    # Just verify it returns an array without error
+  end
+
+  def test_ht_trendmode
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.ht_trendmode(TestData::PRICES)
+
+    assert_instance_of Array, result
+    # HT indicators need lots of data, may return empty for small datasets
+    # Trend mode should be 0 or 1 when values exist
+    result.compact.each do |value|
+      assert [0, 1].include?(value), "HT_TRENDMODE should be 0 or 1"
+    end
+  end
+
+  # ========================================
+  # Tests for Statistical Functions
+  # ========================================
+
+  def test_correl
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.correl(TestData::PRICES, TestData::CLOSE, period: 10)
+
+    assert_instance_of Array, result
+    refute_empty result
+    # Correlation should be between -1 and 1
+    result.compact.each do |value|
+      assert value >= -1 && value <= 1, "CORREL value out of range"
+    end
+  end
+
+  def test_beta
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.beta(TestData::PRICES, TestData::CLOSE, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_var
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.var(TestData::PRICES, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+    # Variance should always be positive
+    result.compact.each do |value|
+      assert value >= 0, "VAR should be positive"
+    end
+  end
+
+  def test_stddev
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.stddev(TestData::PRICES, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+    # StdDev should always be positive
+    result.compact.each do |value|
+      assert value >= 0, "STDDEV should be positive"
+    end
+  end
+
+  def test_linearreg
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.linearreg(TestData::PRICES, period: 14)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_linearreg_angle
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.linearreg_angle(TestData::PRICES, period: 14)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_linearreg_slope
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.linearreg_slope(TestData::PRICES, period: 14)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_tsf
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.tsf(TestData::PRICES, period: 14)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  # ========================================
+  # Tests for Price Transform Indicators
+  # ========================================
+
+  def test_avgprice
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.avgprice(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_medprice
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.medprice(TestData::HIGH, TestData::LOW)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_typprice
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.typprice(TestData::HIGH, TestData::LOW, TestData::CLOSE)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_wclprice
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.wclprice(TestData::HIGH, TestData::LOW, TestData::CLOSE)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  # ========================================
+  # Tests for Additional Momentum Indicators
+  # ========================================
+
+  def test_adxr
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.adxr(TestData::HIGH, TestData::LOW, TestData::CLOSE, period: 5)
+
+    assert_instance_of Array, result
+  end
+
+  def test_apo
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.apo(TestData::PRICES)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_aroon
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    aroon_down, aroon_up = SQA::TAI.aroon(TestData::HIGH, TestData::LOW, period: 5)
+
+    assert_instance_of Array, aroon_down
+    assert_instance_of Array, aroon_up
+  end
+
+  def test_aroonosc
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.aroonosc(TestData::HIGH, TestData::LOW, period: 5)
+
+    assert_instance_of Array, result
+  end
+
+  def test_bop
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.bop(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_cmo
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.cmo(TestData::PRICES, period: 14)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_mfi
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.mfi(
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE,
+      TestData::VOLUME,
+      period: 5
+    )
+
+    assert_instance_of Array, result
+  end
+
+  def test_mom
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.mom(TestData::PRICES, period: 10)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_trix
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.trix(TestData::PRICES, period: 30)
+
+    assert_instance_of Array, result
+  end
+
+  def test_ultosc
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.ultosc(
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+  end
+
+  def test_stochf
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    fastk, fastd = SQA::TAI.stochf(
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, fastk
+    assert_instance_of Array, fastd
+  end
+
+  def test_stochrsi
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    fastk, fastd = SQA::TAI.stochrsi(TestData::PRICES, period: 14)
+
+    assert_instance_of Array, fastk
+    assert_instance_of Array, fastd
+  end
+
+  # ========================================
+  # Tests for Additional Overlap Studies
+  # ========================================
+
+  def test_sarext
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.sarext(TestData::HIGH, TestData::LOW)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_ht_trendline
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.ht_trendline(TestData::PRICES)
+
+    assert_instance_of Array, result
+  end
+
+  def test_mama
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    mama, fama = SQA::TAI.mama(TestData::PRICES)
+
+    assert_instance_of Array, mama
+    assert_instance_of Array, fama
+  end
+
+  def test_midpoint
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.midpoint(TestData::PRICES, period: 14)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_midprice
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.midprice(TestData::HIGH, TestData::LOW, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_wma
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.wma(TestData::PRICES, period: 5)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  # ========================================
+  # Tests for Additional Cycle Indicators
+  # ========================================
+
+  def test_ht_dcphase
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.ht_dcphase(TestData::PRICES)
+
+    assert_instance_of Array, result
+  end
+
+  def test_ht_phasor
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    inphase, quadrature = SQA::TAI.ht_phasor(TestData::PRICES)
+
+    assert_instance_of Array, inphase
+    assert_instance_of Array, quadrature
+  end
+
+  def test_ht_sine
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    sine, lead_sine = SQA::TAI.ht_sine(TestData::PRICES)
+
+    assert_instance_of Array, sine
+    assert_instance_of Array, lead_sine
+  end
+
+  # ========================================
+  # Tests for Volume Indicators
+  # ========================================
+
+  def test_ad
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.ad(
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE,
+      TestData::VOLUME
+    )
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  def test_adosc
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.adosc(
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE,
+      TestData::VOLUME
+    )
+
+    assert_instance_of Array, result
+  end
+
+  def test_trange
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.trange(TestData::HIGH, TestData::LOW, TestData::CLOSE)
+
+    assert_instance_of Array, result
+    refute_empty result
+  end
+
+  # ========================================
+  # Tests for New Candlestick Patterns
+  # ========================================
+
+  def test_cdl_morningstar
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
+
+    result = SQA::TAI.cdl_morningstar(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    result.compact.each do |value|
+      assert [-100, 0, 100].include?(value), "Pattern value invalid"
+    end
+  end
+
+  def test_cdl_eveningstar
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
+
+    result = SQA::TAI.cdl_eveningstar(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    result.compact.each do |value|
+      assert [-100, 0, 100].include?(value), "Pattern value invalid"
+    end
+  end
+
+  def test_cdl_harami
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+    # Fixed by lib/extensions/ta_lib_ffi.rb monkey patch
+
+    result = SQA::TAI.cdl_harami(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    result.compact.each do |value|
+      assert [-100, 0, 100].include?(value), "Pattern value invalid"
+    end
+  end
+
+  def test_cdl_hammer
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.cdl_hammer(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    result.compact.each do |value|
+      assert [-100, 0, 100].include?(value), "Pattern value invalid"
+    end
+  end
+
+  def test_cdl_engulfing
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.cdl_engulfing(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    result.compact.each do |value|
+      assert [-100, 0, 100].include?(value), "Pattern value invalid"
+    end
+  end
+
+  def test_cdl_shootingstar
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.cdl_shootingstar(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    result.compact.each do |value|
+      assert [-100, 0, 100].include?(value), "Pattern value invalid"
+    end
+  end
+
+  def test_cdl_3blackcrows
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.cdl_3blackcrows(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    result.compact.each do |value|
+      assert [-100, 0, 100].include?(value), "Pattern value invalid"
+    end
+  end
+
+  def test_cdl_darkcloudcover
+    skip "TA-Lib not installed" unless SQA::TAI.available?
+
+    result = SQA::TAI.cdl_darkcloudcover(
+      TestData::OPEN,
+      TestData::HIGH,
+      TestData::LOW,
+      TestData::CLOSE
+    )
+
+    assert_instance_of Array, result
+    result.compact.each do |value|
+      assert [-100, 0, 100].include?(value), "Pattern value invalid"
     end
   end
 end

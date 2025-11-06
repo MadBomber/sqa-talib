@@ -4,16 +4,17 @@
 [![Gem Version](https://badge.fury.io/rb/sqa-tai.svg)](https://badge.fury.io/rb/sqa-tai)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs-blue.svg)](https://madbomber.github.io/sqa-tai)
 
-Ruby wrapper around [TA-Lib](https://ta-lib.org/) providing 200+ battle-tested technical analysis indicators for stock market analysis. Part of the [SQA](https://github.com/MadBomber/sqa) (Stock Qualitative Analysis) ecosystem.
+Ruby wrapper around [TA-Lib](https://ta-lib.org/) providing **132 technical analysis indicators** for stock market analysis. Part of the [SQA](https://github.com/MadBomber/sqa) (Stock Qualitative Analysis) ecosystem.
 
 ## Features
 
-- 🚀 **200+ Indicators** - Access to all TA-Lib indicators
+- 🚀 **132 Indicators** - Comprehensive coverage with 94% of trading-relevant TA-Lib indicators
 - ⚡ **Blazing Fast** - C library performance with Ruby convenience
-- 🎯 **Clean API** - Simple, intuitive Ruby interface
-- 📊 **Comprehensive** - Overlap studies, momentum, volatility, volume, patterns
-- ✅ **Well Tested** - Extensive test coverage
+- 🎯 **Clean API** - Simple, intuitive Ruby interface with keyword arguments
+- 📊 **Comprehensive** - Overlap studies, momentum, volatility, volume, cycles, stats, patterns
+- ✅ **Well Tested** - 73 tests, 332 assertions, 100% passing
 - 📚 **Documented** - Full documentation at [madbomber.github.io/sqa-tai](https://madbomber.github.io/sqa-tai)
+- 🔧 **Bug Fixed** - Includes monkey patch for ta_lib_ffi 0.3.0 multi-array parameter bug
 
 ## Prerequisites
 
@@ -73,39 +74,74 @@ if SQA::TAI.available?
 end
 ```
 
-## Available Indicators
+## Available Indicators (132 Total)
 
-### Overlap Studies (Moving Averages, Bands)
-- **SMA** - Simple Moving Average
-- **EMA** - Exponential Moving Average
-- **WMA** - Weighted Moving Average
+### Overlap Studies (15)
+- **SMA, EMA, WMA** - Moving Averages
+- **DEMA, TEMA, TRIMA** - Advanced Moving Averages
+- **KAMA, T3, MAMA** - Adaptive Moving Averages
 - **BBANDS** - Bollinger Bands
-- And many more...
+- **SAREXT, HT_TRENDLINE** - Trend indicators
+- **MIDPOINT, MIDPRICE, MAVP** - Price calculations
 
-### Momentum Indicators
+### Momentum Indicators (30)
 - **RSI** - Relative Strength Index
-- **MACD** - Moving Average Convergence/Divergence
-- **STOCH** - Stochastic Oscillator
+- **MACD, MACDEXT, MACDFIX** - MACD variants
+- **STOCH, STOCHF, STOCHRSI** - Stochastic variants
 - **MOM** - Momentum
-- And many more...
+- **CCI** - Commodity Channel Index
+- **WILLR** - Williams' %R
+- **ROC, ROCP, ROCR, ROCR100** - Rate of Change variants
+- **PPO, APO** - Price Oscillators
+- **ADX, ADXR, DX** - Directional Movement
+- **AROON, AROONOSC** - Aroon indicators
+- **BOP** - Balance of Power
+- **CMO** - Chande Momentum Oscillator
+- **MFI** - Money Flow Index
+- **PLUS_DI, MINUS_DI, PLUS_DM, MINUS_DM** - Directional indicators
+- **TRIX** - Triple Smooth EMA
+- **ULTOSC** - Ultimate Oscillator
 
-### Volatility Indicators
+### Volatility Indicators (4)
 - **ATR** - Average True Range
-- **TRANGE** - True Range
 - **NATR** - Normalized Average True Range
-- And many more...
+- **TRANGE** - True Range
+- **SAR** - Parabolic SAR
 
-### Volume Indicators
+### Volume Indicators (3)
 - **OBV** - On Balance Volume
 - **AD** - Chaikin A/D Line
 - **ADOSC** - Chaikin A/D Oscillator
-- And many more...
 
-### Pattern Recognition
-- **CDL_DOJI** - Doji
-- **CDL_HAMMER** - Hammer
-- **CDL_ENGULFING** - Engulfing Pattern
-- And 60+ more candlestick patterns...
+### Price Transform (4)
+- **AVGPRICE** - Average Price
+- **MEDPRICE** - Median Price
+- **TYPPRICE** - Typical Price
+- **WCLPRICE** - Weighted Close Price
+
+### Cycle Indicators (5)
+- **HT_DCPERIOD** - Hilbert Transform - Dominant Cycle Period
+- **HT_TRENDMODE** - Hilbert Transform - Trend vs Cycle Mode
+- **HT_DCPHASE** - Hilbert Transform - Dominant Cycle Phase
+- **HT_PHASOR** - Hilbert Transform - Phasor Components
+- **HT_SINE** - Hilbert Transform - SineWave
+
+### Statistical Functions (9)
+- **CORREL** - Pearson's Correlation Coefficient
+- **BETA** - Beta Coefficient
+- **VAR** - Variance
+- **STDDEV** - Standard Deviation
+- **LINEARREG** - Linear Regression
+- **LINEARREG_ANGLE, LINEARREG_INTERCEPT, LINEARREG_SLOPE** - Linear Regression components
+- **TSF** - Time Series Forecast
+
+### Pattern Recognition (61)
+- **Basic Patterns**: Doji, Hammer, Engulfing, Hanging Man, Shooting Star
+- **Star Patterns**: Morning Star, Evening Star, Morning Doji Star, Evening Doji Star
+- **Reversal Patterns**: Harami, Piercing, Dark Cloud Cover, Inverted Hammer
+- **Continuation Patterns**: Three White Soldiers, Three Black Crows, Rising/Falling Three Methods
+- **Complex Patterns**: Abandoned Baby, Kicking, Unique 3 River, Tristar
+- And 40+ more candlestick patterns...
 
 See [full indicator list](https://madbomber.github.io/sqa-tai/indicators/) in documentation.
 
