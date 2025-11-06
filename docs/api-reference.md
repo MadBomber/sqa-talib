@@ -34,6 +34,7 @@ SQA::TAI.check_available!
 Simple Moving Average.
 
 **Parameters:**
+
 - `prices` (Array<Float>) - Price data
 - `period` (Integer) - Time period (default: 30)
 
@@ -48,6 +49,7 @@ sma = SQA::TAI.sma(prices, period: 20)
 Exponential Moving Average.
 
 **Parameters:**
+
 - `prices` (Array<Float>) - Price data
 - `period` (Integer) - Time period (default: 30)
 
@@ -62,6 +64,7 @@ ema = SQA::TAI.ema(prices, period: 20)
 Weighted Moving Average.
 
 **Parameters:**
+
 - `prices` (Array<Float>) - Price data
 - `period` (Integer) - Time period (default: 30)
 
@@ -76,6 +79,7 @@ wma = SQA::TAI.wma(prices, period: 20)
 Bollinger Bands.
 
 **Parameters:**
+
 - `prices` (Array<Float>) - Price data
 - `period` (Integer) - Time period (default: 5)
 - `nbdev_up` (Float) - Upper deviation (default: 2.0)
@@ -113,6 +117,7 @@ rsi = SQA::TAI.rsi(prices, period: 14)
 Moving Average Convergence/Divergence.
 
 **Parameters:**
+
 - `prices` (Array<Float>) - Price data
 - `fast_period` (Integer) - Fast period (default: 12)
 - `slow_period` (Integer) - Slow period (default: 26)
@@ -137,6 +142,7 @@ macd, signal, histogram = SQA::TAI.macd(
 Stochastic Oscillator.
 
 **Parameters:**
+
 - `high` (Array<Float>) - High prices
 - `low` (Array<Float>) - Low prices
 - `close` (Array<Float>) - Close prices
@@ -155,6 +161,7 @@ slowk, slowd = SQA::TAI.stoch(high, low, close)
 Momentum.
 
 **Parameters:**
+
 - `prices` (Array<Float>) - Price data
 - `period` (Integer) - Time period (default: 10)
 
@@ -171,6 +178,7 @@ mom = SQA::TAI.mom(prices, period: 10)
 Average True Range.
 
 **Parameters:**
+
 - `high` (Array<Float>) - High prices
 - `low` (Array<Float>) - Low prices
 - `close` (Array<Float>) - Close prices
@@ -187,6 +195,7 @@ atr = SQA::TAI.atr(high, low, close, period: 14)
 True Range.
 
 **Parameters:**
+
 - `high` (Array<Float>) - High prices
 - `low` (Array<Float>) - Low prices
 - `close` (Array<Float>) - Close prices
@@ -204,6 +213,7 @@ tr = SQA::TAI.trange(high, low, close)
 On Balance Volume.
 
 **Parameters:**
+
 - `close` (Array<Float>) - Close prices
 - `volume` (Array<Float>) - Volume data
 
@@ -218,6 +228,7 @@ obv = SQA::TAI.obv(close, volume)
 Chaikin A/D Line.
 
 **Parameters:**
+
 - `high` (Array<Float>) - High prices
 - `low` (Array<Float>) - Low prices
 - `close` (Array<Float>) - Close prices
@@ -236,6 +247,7 @@ ad = SQA::TAI.ad(high, low, close, volume)
 Doji candlestick pattern.
 
 **Parameters:**
+
 - `open` (Array<Float>) - Open prices
 - `high` (Array<Float>) - High prices
 - `low` (Array<Float>) - Low prices

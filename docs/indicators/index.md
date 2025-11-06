@@ -40,9 +40,9 @@ Analyze trading volume:
 
 Identify candlestick patterns:
 
-- [Doji](patterns/doji.md)
-- [Hammer](patterns/hammer.md)
-- [Engulfing Pattern](patterns/engulfing.md)
+- [Doji](patterns/cdl_doji.md)
+- [Hammer](patterns/cdl_hammer.md)
+- [Engulfing Pattern](patterns/cdl_engulfing.md)
 
 ## Usage Overview
 

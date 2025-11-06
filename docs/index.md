@@ -68,18 +68,18 @@ Moving averages and bands for trend analysis:
 - [SMA](indicators/overlap/sma.md) - Simple Moving Average
 - [EMA](indicators/overlap/ema.md) - Exponential Moving Average
 - [WMA](indicators/overlap/wma.md) - Weighted Moving Average
-- **DEMA** - Double Exponential Moving Average
-- **TEMA** - Triple Exponential Moving Average
-- **TRIMA** - Triangular Moving Average
-- **KAMA** - Kaufman Adaptive Moving Average
-- **T3** - Triple Exponential Moving Average (T3)
+- [DEMA](indicators/overlap/dema.md) - Double Exponential Moving Average
+- [TEMA](indicators/overlap/tema.md) - Triple Exponential Moving Average
+- [TRIMA](indicators/overlap/trima.md) - Triangular Moving Average
+- [KAMA](indicators/overlap/kama.md) - Kaufman Adaptive Moving Average
+- [T3](indicators/overlap/t3.md) - Triple Exponential Moving Average (T3)
 - [BBANDS](indicators/overlap/bbands.md) - Bollinger Bands
-- **SAREXT** - Parabolic SAR Extended
-- **HT_TRENDLINE** - Hilbert Transform Instantaneous Trendline
-- **MAMA** - MESA Adaptive Moving Average
-- **MAVP** - Moving Average with Variable Period
-- **MIDPOINT** - Midpoint over period
-- **MIDPRICE** - Midpoint Price over period
+- [SAREXT](indicators/volatility/sarext.md) - Parabolic SAR Extended
+- [HT_TRENDLINE](indicators/volatility/ht_trendline.md) - Hilbert Transform Instantaneous Trendline
+- [MAMA](indicators/volatility/mama.md) - MESA Adaptive Moving Average
+- [MAVP](indicators/volatility/mavp.md) - Moving Average with Variable Period
+- [MIDPOINT](indicators/volatility/midpoint.md) - Midpoint over period
+- [MIDPRICE](indicators/volatility/midprice.md) - Midpoint Price over period
 
 ### Momentum Indicators (30)
 Measure rate of price change:
@@ -88,112 +88,142 @@ Measure rate of price change:
 - [MACD](indicators/momentum/macd.md) - Moving Average Convergence/Divergence
 - [STOCH](indicators/momentum/stoch.md) - Stochastic Oscillator
 - [MOM](indicators/momentum/mom.md) - Momentum
-- **CCI** - Commodity Channel Index
-- **WILLR** - Williams' %R
-- **ROC** - Rate of Change
-- **ROCP** - Rate of Change Percentage
-- **ROCR** - Rate of Change Ratio
-- **PPO** - Percentage Price Oscillator
-- **ADX** - Average Directional Index
-- **ADXR** - Average Directional Movement Index Rating
-- **APO** - Absolute Price Oscillator
-- **AROON** - Aroon Indicator
-- **AROONOSC** - Aroon Oscillator
-- **BOP** - Balance of Power
-- **CMO** - Chande Momentum Oscillator
-- **DX** - Directional Movement Index
-- **MACDEXT** - MACD with Controllable MA Type
-- **MACDFIX** - MACD Fix 12/26
-- **MFI** - Money Flow Index
-- **MINUS_DI** - Minus Directional Indicator
-- **MINUS_DM** - Minus Directional Movement
-- **PLUS_DI** - Plus Directional Indicator
-- **PLUS_DM** - Plus Directional Movement
-- **ROCR100** - Rate of Change Ratio 100 scale
-- **STOCHF** - Stochastic Fast
-- **STOCHRSI** - Stochastic RSI
-- **TRIX** - 1-day ROC of Triple Smooth EMA
-- **ULTOSC** - Ultimate Oscillator
+- [CCI](indicators/momentum/cci.md) - Commodity Channel Index
+- [WILLR](indicators/momentum/willr.md) - Williams' %R
+- [ROC](indicators/momentum/roc.md) - Rate of Change
+- [ROCP](indicators/momentum/rocp.md) - Rate of Change Percentage
+- [ROCR](indicators/momentum/rocr.md) - Rate of Change Ratio
+- [PPO](indicators/momentum/ppo.md) - Percentage Price Oscillator
+- [ADX](indicators/momentum/adx.md) - Average Directional Index
+- [ADXR](indicators/momentum/adxr.md) - Average Directional Movement Index Rating
+- [APO](indicators/momentum/apo.md) - Absolute Price Oscillator
+- [AROON](indicators/momentum/aroon.md) - Aroon Indicator
+- [AROONOSC](indicators/momentum/aroonosc.md) - Aroon Oscillator
+- [BOP](indicators/momentum/bop.md) - Balance of Power
+- [CMO](indicators/momentum/cmo.md) - Chande Momentum Oscillator
+- [DX](indicators/momentum/dx.md) - Directional Movement Index
+- [MACDEXT](indicators/momentum/macdext.md) - MACD with Controllable MA Type
+- [MACDFIX](indicators/momentum/macdfix.md) - MACD Fix 12/26
+- [MFI](indicators/momentum/mfi.md) - Money Flow Index
+- [MINUS_DI](indicators/momentum/minus_di.md) - Minus Directional Indicator
+- [MINUS_DM](indicators/momentum/minus_dm.md) - Minus Directional Movement
+- [PLUS_DI](indicators/momentum/plus_di.md) - Plus Directional Indicator
+- [PLUS_DM](indicators/momentum/plus_dm.md) - Plus Directional Movement
+- [ROCR100](indicators/momentum/rocr100.md) - Rate of Change Ratio 100 scale
+- [STOCHF](indicators/momentum/stochf.md) - Stochastic Fast
+- [STOCHRSI](indicators/momentum/stochrsi.md) - Stochastic RSI
+- [TRIX](indicators/momentum/trix.md) - 1-day ROC of Triple Smooth EMA
+- [ULTOSC](indicators/momentum/ultosc.md) - Ultimate Oscillator
 
 ### Volatility Indicators (4)
 Measure price volatility:
 
 - [ATR](indicators/volatility/atr.md) - Average True Range
-- **NATR** - Normalized Average True Range
+- [NATR](indicators/volatility/natr.md) - Normalized Average True Range
 - [TRANGE](indicators/volatility/trange.md) - True Range
-- **SAR** - Parabolic SAR
+- [SAR](indicators/volatility/sar.md) - Parabolic SAR
 
 ### Volume Indicators (3)
 Analyze trading volume:
 
 - [OBV](indicators/volume/obv.md) - On Balance Volume
 - [AD](indicators/volume/ad.md) - Chaikin A/D Line
-- **ADOSC** - Chaikin A/D Oscillator
+- [ADOSC](indicators/volume/adosc.md) - Chaikin A/D Oscillator
 
 ### Price Transform (4)
 Price averaging and transformation:
 
-- **AVGPRICE** - Average Price
-- **MEDPRICE** - Median Price
-- **TYPPRICE** - Typical Price
-- **WCLPRICE** - Weighted Close Price
+- [AVGPRICE](indicators/price_transform/avgprice.md) - Average Price
+- [MEDPRICE](indicators/price_transform/medprice.md) - Median Price
+- [TYPPRICE](indicators/price_transform/typprice.md) - Typical Price
+- [WCLPRICE](indicators/price_transform/wclprice.md) - Weighted Close Price
 
 ### Cycle Indicators (5)
 Identify market cycles:
 
-- **HT_DCPERIOD** - Hilbert Transform - Dominant Cycle Period
-- **HT_TRENDMODE** - Hilbert Transform - Trend vs Cycle Mode
-- **HT_DCPHASE** - Hilbert Transform - Dominant Cycle Phase
-- **HT_PHASOR** - Hilbert Transform - Phasor Components
-- **HT_SINE** - Hilbert Transform - SineWave
+- [HT_DCPERIOD](indicators/cycle/ht_dcperiod.md) - Hilbert Transform - Dominant Cycle Period
+- [HT_TRENDMODE](indicators/cycle/ht_trendmode.md) - Hilbert Transform - Trend vs Cycle Mode
+- [HT_DCPHASE](indicators/cycle/ht_dcphase.md) - Hilbert Transform - Dominant Cycle Phase
+- [HT_PHASOR](indicators/cycle/ht_phasor.md) - Hilbert Transform - Phasor Components
+- [HT_SINE](indicators/cycle/ht_sine.md) - Hilbert Transform - SineWave
 
 ### Statistical Functions (9)
 Statistical analysis and regression:
 
-- **CORREL** - Pearson's Correlation Coefficient
-- **BETA** - Beta Coefficient
-- **VAR** - Variance
-- **STDDEV** - Standard Deviation
-- **LINEARREG** - Linear Regression
-- **LINEARREG_ANGLE** - Linear Regression Angle
-- **LINEARREG_INTERCEPT** - Linear Regression Intercept
-- **LINEARREG_SLOPE** - Linear Regression Slope
-- **TSF** - Time Series Forecast
+- [CORREL](indicators/statistical/correl.md) - Pearson's Correlation Coefficient
+- [BETA](indicators/statistical/beta.md) - Beta Coefficient
+- [VAR](indicators/statistical/var.md) - Variance
+- [STDDEV](indicators/statistical/stddev.md) - Standard Deviation
+- [LINEARREG](indicators/statistical/linearreg.md) - Linear Regression
+- [LINEARREG_ANGLE](indicators/statistical/linearreg_angle.md) - Linear Regression Angle
+- [LINEARREG_INTERCEPT](indicators/statistical/linearreg_intercept.md) - Linear Regression Intercept
+- [LINEARREG_SLOPE](indicators/statistical/linearreg_slope.md) - Linear Regression Slope
+- [TSF](indicators/statistical/tsf.md) - Time Series Forecast
 
 ### Pattern Recognition (61)
 Identify candlestick patterns:
 
-- [Doji](indicators/patterns/doji.md) - Doji Pattern
-- [Hammer](indicators/patterns/hammer.md) - Hammer Pattern
-- [Engulfing](indicators/patterns/engulfing.md) - Engulfing Pattern
-- **Morning Star** - Morning Star Pattern
-- **Evening Star** - Evening Star Pattern
-- **Harami** - Harami Pattern
-- **Piercing** - Piercing Pattern
-- **Shooting Star** - Shooting Star Pattern
-- **Marubozu** - Marubozu Pattern
-- **Spinning Top** - Spinning Top Pattern
-- **Dragonfly Doji** - Dragonfly Doji Pattern
-- **Gravestone Doji** - Gravestone Doji Pattern
-- **Two Crows** - Two Crows Pattern
-- **Three Black Crows** - Three Black Crows Pattern
-- **Three Inside** - Three Inside Up/Down Pattern
-- **Three Line Strike** - Three Line Strike Pattern
-- **Three Outside** - Three Outside Up/Down Pattern
-- **Three White Soldiers** - Three Advancing White Soldiers
-- **Dark Cloud Cover** - Dark Cloud Cover Pattern
-- **Abandoned Baby** - Abandoned Baby Pattern
-- **Hanging Man** - Hanging Man Pattern
-- **Inverted Hammer** - Inverted Hammer Pattern
-- **Kicking** - Kicking Pattern
-- **Morning Doji Star** - Morning Doji Star Pattern
-- **Evening Doji Star** - Evening Doji Star Pattern
-- **High Wave** - High-Wave Candle Pattern
-- **Hikkake** - Hikkake Pattern
-- **Rickshaw Man** - Rickshaw Man Pattern
-- **Takuri** - Takuri (Dragonfly Doji with very long lower shadow)
-- **Tristar** - Tristar Pattern
-- And 32 more candlestick patterns...
+- [Doji](indicators/patterns/cdl_doji.md) - Doji Pattern
+- [Hammer](indicators/patterns/cdl_hammer.md) - Hammer Pattern
+- [Engulfing](indicators/patterns/cdl_engulfing.md) - Engulfing Pattern
+- [Morning Star](indicators/patterns/cdl_morningstar.md) - Morning Star Pattern
+- [Evening Star](indicators/patterns/cdl_eveningstar.md) - Evening Star Pattern
+- [Harami](indicators/patterns/cdl_harami.md) - Harami Pattern
+- [Piercing](indicators/patterns/cdl_piercing.md) - Piercing Pattern
+- [Shooting Star](indicators/patterns/cdl_shootingstar.md) - Shooting Star Pattern
+- [Marubozu](indicators/patterns/cdl_marubozu.md) - Marubozu Pattern
+- [Spinning Top](indicators/patterns/cdl_spinningtop.md) - Spinning Top Pattern
+- [Dragonfly Doji](indicators/patterns/cdl_dragonflydoji.md) - Dragonfly Doji Pattern
+- [Gravestone Doji](indicators/patterns/cdl_gravestonedoji.md) - Gravestone Doji Pattern
+- [Two Crows](indicators/patterns/cdl_2crows.md) - Two Crows Pattern
+- [Three Black Crows](indicators/patterns/cdl_3blackcrows.md) - Three Black Crows Pattern
+- [Three Inside](indicators/patterns/cdl_3inside.md) - Three Inside Up/Down Pattern
+- [Three Line Strike](indicators/patterns/cdl_3linestrike.md) - Three Line Strike Pattern
+- [Three Outside](indicators/patterns/cdl_3outside.md) - Three Outside Up/Down Pattern
+- [Three White Soldiers](indicators/patterns/cdl_3whitesoldiers.md) - Three Advancing White Soldiers
+- [Dark Cloud Cover](indicators/patterns/cdl_darkcloudcover.md) - Dark Cloud Cover Pattern
+- [Abandoned Baby](indicators/patterns/cdl_abandonedbaby.md) - Abandoned Baby Pattern
+- [Hanging Man](indicators/patterns/cdl_hangingman.md) - Hanging Man Pattern
+- [Inverted Hammer](indicators/patterns/cdl_invertedhammer.md) - Inverted Hammer Pattern
+- [Kicking](indicators/patterns/cdl_kicking.md) - Kicking Pattern
+- [Morning Doji Star](indicators/patterns/cdl_morningdojistar.md) - Morning Doji Star Pattern
+- [Evening Doji Star](indicators/patterns/cdl_eveningdojistar.md) - Evening Doji Star Pattern
+- [High Wave](indicators/patterns/cdl_highwave.md) - High-Wave Candle Pattern
+- [Hikkake](indicators/patterns/cdl_hikkake.md) - Hikkake Pattern
+- [Rickshaw Man](indicators/patterns/cdl_rickshawman.md) - Rickshaw Man Pattern
+- [Takuri](indicators/patterns/cdl_takuri.md) - Takuri (Dragonfly Doji with very long lower shadow)
+- [Tristar](indicators/patterns/cdl_tristar.md) - Tristar Pattern
+- [Three Stars In The South](indicators/patterns/cdl_3starsinsouth.md) - Three Stars In The South Pattern
+- [Advance Block](indicators/patterns/cdl_advanceblock.md) - Advance Block Pattern
+- [Belt-hold](indicators/patterns/cdl_belthold.md) - Belt-hold Pattern
+- [Breakaway](indicators/patterns/cdl_breakaway.md) - Breakaway Pattern
+- [Closing Marubozu](indicators/patterns/cdl_closingmarubozu.md) - Closing Marubozu Pattern
+- [Concealing Baby Swallow](indicators/patterns/cdl_concealbabyswall.md) - Concealing Baby Swallow Pattern
+- [Counterattack](indicators/patterns/cdl_counterattack.md) - Counterattack Pattern
+- [Doji Star](indicators/patterns/cdl_dojistar.md) - Doji Star Pattern
+- [Gap Side-by-Side White](indicators/patterns/cdl_gapsidesidewhite.md) - Gap Side-by-Side White Pattern
+- [Harami Cross](indicators/patterns/cdl_haramicross.md) - Harami Cross Pattern
+- [Modified Hikkake](indicators/patterns/cdl_hikkakemod.md) - Modified Hikkake Pattern
+- [Homing Pigeon](indicators/patterns/cdl_homingpigeon.md) - Homing Pigeon Pattern
+- [Identical Three Crows](indicators/patterns/cdl_identical3crows.md) - Identical Three Crows Pattern
+- [In-Neck](indicators/patterns/cdl_inneck.md) - In-Neck Pattern
+- [Kicking by Length](indicators/patterns/cdl_kickingbylength.md) - Kicking by Length Pattern
+- [Ladder Bottom](indicators/patterns/cdl_ladderbottom.md) - Ladder Bottom Pattern
+- [Long Legged Doji](indicators/patterns/cdl_longleggeddoji.md) - Long Legged Doji Pattern
+- [Long Line](indicators/patterns/cdl_longline.md) - Long Line Candle Pattern
+- [Matching Low](indicators/patterns/cdl_matchinglow.md) - Matching Low Pattern
+- [Mat Hold](indicators/patterns/cdl_mathold.md) - Mat Hold Pattern
+- [On-Neck](indicators/patterns/cdl_onneck.md) - On-Neck Pattern
+- [Rising/Falling Three Methods](indicators/patterns/cdl_risefall3methods.md) - Rising/Falling Three Methods Pattern
+- [Separating Lines](indicators/patterns/cdl_separatinglines.md) - Separating Lines Pattern
+- [Short Line](indicators/patterns/cdl_shortline.md) - Short Line Candle Pattern
+- [Stalled Pattern](indicators/patterns/cdl_stalledpattern.md) - Stalled Pattern
+- [Stick Sandwich](indicators/patterns/cdl_sticksandwich.md) - Stick Sandwich Pattern
+- [Tasuki Gap](indicators/patterns/cdl_tasukigap.md) - Tasuki Gap Pattern
+- [Thrusting](indicators/patterns/cdl_thrusting.md) - Thrusting Pattern
+- [Unique 3 River](indicators/patterns/cdl_unique3river.md) - Unique 3 River Pattern
+- [Upside Gap Two Crows](indicators/patterns/cdl_upsidegap2crows.md) - Upside Gap Two Crows Pattern
+- [Upside/Downside Gap Three Methods](indicators/patterns/cdl_xsidegap3methods.md) - Upside/Downside Gap Three Methods Pattern
 
 ## SQA Ecosystem
 

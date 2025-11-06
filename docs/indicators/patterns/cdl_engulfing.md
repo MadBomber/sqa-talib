@@ -403,8 +403,8 @@ end
 
 ## See Also
 
-- [Hammer Pattern](hammer.md) - Single candle reversal
-- [Doji Pattern](doji.md) - Indecision pattern
-- [Pattern Recognition Overview](index.md)
+- [Hammer Pattern](cdl_hammer.md) - Single candle reversal
+- [Doji Pattern](cdl_doji.md) - Indecision pattern
+- [Pattern Recognition Overview](../index.md)
 - [Back to Indicators](../index.md)
 - [Basic Usage](../../getting-started/basic-usage.md)

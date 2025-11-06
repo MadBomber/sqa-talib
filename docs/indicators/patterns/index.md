@@ -41,14 +41,14 @@ Pattern functions return an array of integers:
 
 ### Single Candlestick Patterns
 
-- [Doji](doji.md) - Indecision, potential reversal
-- [Hammer](hammer.md) - Bullish reversal after downtrend
+- [Doji](cdl_doji.md) - Indecision, potential reversal
+- [Hammer](cdl_hammer.md) - Bullish reversal after downtrend
 - Shooting Star - Bearish reversal after uptrend
 - Spinning Top - Indecision, small body
 
 ### Two Candlestick Patterns
 
-- [Engulfing Pattern](engulfing.md) - Strong reversal signal
+- [Engulfing Pattern](cdl_engulfing.md) - Strong reversal signal
 - Harami - Potential trend change
 - Piercing Pattern - Bullish reversal
 - Dark Cloud Cover - Bearish reversal
@@ -276,8 +276,8 @@ end
 
 ## See Also
 
-- [Doji Pattern](doji.md)
-- [Hammer Pattern](hammer.md)
-- [Engulfing Pattern](engulfing.md)
+- [Doji Pattern](cdl_doji.md)
+- [Hammer Pattern](cdl_hammer.md)
+- [Engulfing Pattern](cdl_engulfing.md)
 - [Back to Indicators](../index.md)
 - [Basic Usage](../../getting-started/basic-usage.md)

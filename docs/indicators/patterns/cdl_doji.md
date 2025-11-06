@@ -272,12 +272,12 @@ end
 
 ## Related Patterns
 
-- [Hammer](hammer.md) - Similar but with small body
-- [Spinning Top](doji.md) - Small body, indecision
+- [Hammer](cdl_hammer.md) - Similar but with small body
+- [Spinning Top](cdl_doji.md) - Small body, indecision
 - Morning/Evening Star - Multi-candle patterns with Doji
 
 ## See Also
 
-- [Pattern Recognition Overview](index.md)
+- [Pattern Recognition Overview](../index.md)
 - [Back to Indicators](../index.md)
 - [Basic Usage](../../getting-started/basic-usage.md)

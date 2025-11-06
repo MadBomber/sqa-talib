@@ -338,7 +338,7 @@ end
 
 ## See Also
 
-- [Shooting Star](hammer.md) - Bearish opposite
-- [Pattern Recognition Overview](index.md)
+- [Shooting Star](cdl_hammer.md) - Bearish opposite
+- [Pattern Recognition Overview](../index.md)
 - [Back to Indicators](../index.md)
 - [Basic Usage](../../getting-started/basic-usage.md)
