@@ -8,7 +8,7 @@
 <table>
 <tr>
 <td width="30%" valign="top" align="center">
-  <img src="docs/assets/images/sqa-tai.jpg" alt="Ruby Turns Information into Knowledge" width="60%">
+  <img src="docs/assets/images/sqa-tai.jpg" alt="Ruby Turns Information into Knowledge" width="70%">
   <br/>
 </td>
 <td width="70%" valign="top">
