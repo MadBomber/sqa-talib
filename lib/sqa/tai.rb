@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "talib/version"
+require_relative "tai/version"
 require "ta_lib_ffi"
 
 module SQA
@@ -77,12 +77,19 @@ module SQA
         validate_prices!(prices)
         validate_period!(period, prices.size)
 
-        TALibFFI.bbands(
+        result = TALibFFI.bbands(
           prices,
           time_period: period,
           nbdev_up: nbdev_up,
           nbdev_dn: nbdev_down
         )
+
+        # Handle hash return format from newer ta_lib_ffi versions
+        if result.is_a?(Hash)
+          [result[:upper_band], result[:middle_band], result[:lower_band]]
+        else
+          result
+        end
       end
 
       # ========================================
@@ -111,12 +118,19 @@ module SQA
         check_available!
         validate_prices!(prices)
 
-        TALibFFI.macd(
+        result = TALibFFI.macd(
           prices,
           fast_period: fast_period,
           slow_period: slow_period,
           signal_period: signal_period
         )
+
+        # Handle hash return format from newer ta_lib_ffi versions
+        if result.is_a?(Hash)
+          [result[:macd], result[:macd_signal], result[:macd_hist]]
+        else
+          result
+        end
       end
 
       # Stochastic Oscillator
@@ -133,7 +147,7 @@ module SQA
         validate_prices!(low)
         validate_prices!(close)
 
-        TALibFFI.stoch(
+        result = TALibFFI.stoch(
           high,
           low,
           close,
@@ -141,6 +155,13 @@ module SQA
           slowk_period: slowk_period,
           slowd_period: slowd_period
         )
+
+        # Handle hash return format from newer ta_lib_ffi versions
+        if result.is_a?(Hash)
+          [result[:slowk], result[:slowd]]
+        else
+          result
+        end
       end
 
       # Momentum
