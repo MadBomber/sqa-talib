@@ -7,14 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] 2025-11-13
 ### Added
 - Help system for accessing indicator documentation (`SQA::TAI.help`)
   - Returns URLs to online documentation for any indicator
   - Supports searching by name, filtering by category, and listing all indicators
   - Auto-generated from mkdocs documentation files via `rake help:generate`
-  - Flexible API returns HelpResource objects with URL, name, and category
+  - Flexible API returns Help::Resource objects with formatted output
   - Optional browser integration to open documentation directly
-  - Zeitwerk-compatible file structure with `help.rb` and `help_resource.rb`
+  - Zeitwerk-compatible namespace structure with `help/resource.rb` and `help/data.json`
+  - Lazy-loaded JSON data for improved gem load performance
+  - Formatted `to_s` output displaying indicator name, category, and website URL
 
 ## [0.1.1] 2025-11-13
 ### Added
